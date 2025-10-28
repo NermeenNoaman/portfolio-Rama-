@@ -1,19 +1,17 @@
-<!DOCTYPE html>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title data-translate-key="hero_name">Rama Albringi Portfolio</title>
     <meta name="description" content="A modern dark portfolio template inspired by the Northern Lights with comprehensive sections and smooth animations">
-    <meta property="og:title" content="Aurora Portfolio Template">
     <meta property="og:description" content="A Northern Lights inspired portfolio template with dark mode aesthetic">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Favicon - حرف R بتدرج لوني جميل -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%2300ffaa;stop-opacity:1' /><stop offset='50%25' style='stop-color:%2300aaff;stop-opacity:1' /><stop offset='100%25' style='stop-color:%23aa00ff;stop-opacity:1' /></linearGradient></defs><circle cx='50' cy='50' r='45' fill='%230a0e1a'/><text x='50' y='70' font-family='Arial, sans-serif' font-size='60' font-weight='bold' fill='url(%23grad)' text-anchor='middle'>R</text></svg>" type="image/svg+xml">
 
     <script>
@@ -70,7 +68,7 @@
         .card-hover.purple-glow:hover { border-color: #aa00ff; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(170, 0, 255, 0.5); }
         .card-hover.pink-glow:hover { border-color: #ff00aa; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 0, 170, 0.5); }
         
-        /* RTL Styles - تحسين المسافات */
+        /* RTL Styles */
         .rtl-mode { text-align: right; }
         .rtl-mode .space-x-8 > * { margin-left: 0 !important; margin-right: 2rem !important; }
         .rtl-mode .space-x-8 > *:first-child { margin-right: 0 !important; }
@@ -80,25 +78,217 @@
         .rtl-mode .ml-4 { margin-left: 0 !important; margin-right: 1rem !important; }
         .rtl-mode .space-x-4 > * { margin-left: 0 !important; margin-right: 1rem !important; }
         .rtl-mode .space-x-4 > *:first-child { margin-right: 0 !important; }
+       
+        /* Navigation Styles */
+        * { -webkit-tap-highlight-color: transparent; }
+        body { overflow-x: hidden; }
         
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            background: rgba(10, 14, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(42, 47, 62, 0.5);
+        }
 
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            z-index: 60;
+        }
+
+        .desktop-menu {
+            display: none;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .desktop-menu a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .desktop-menu a:hover {
+            color: #00ffaa;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 60;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 300px;
+            height: 100vh;
+            background: rgba(26, 31, 46, 0.98);
+            backdrop-filter: blur(20px);
+            transition: right 0.3s ease;
+            z-index: 55;
+            padding: 5rem 2rem 2rem;
+            border-left: 1px solid rgba(0, 255, 170, 0.2);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 50;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem 0;
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(42, 47, 62, 0.5);
+            transition: all 0.3s;
+            text-align: left;
+        }
+        .rtl-mode .mobile-menu a {
+            text-align: right;
+        }
+
+        .mobile-menu a:hover {
+            color: #00ffaa;
+            padding-left: 1rem;
+        }
+        .rtl-mode .mobile-menu a:hover {
+            padding-left: 0;
+            padding-right: 1rem;
+        }
+
+        .mobile-lang-btn {
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 2px solid #00ffaa;
+            color: #00ffaa;
+            border-radius: 9999px;
+            width: 100%;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mobile-lang-btn:hover {
+            background: #00ffaa;
+            color: #0a0e1a;
+        }
+
+        @media (min-width: 768px) {
+            .desktop-menu {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: none;
+            }
+            
+            .mobile-menu,
+            .mobile-menu-overlay {
+                display: none !important;
+            }
+
+            .logo {
+                font-size: 1.75rem;
+            }
+        }
 
         .large-circular-image {
-            width: 500px; height: 500px;
+            width: 250px; 
+            height: 250px;
             border: 3px solid #00aaff;
             border-radius: 50%;
             padding: 0; 
-            margin-right: 30px;
-            margin-left: 100px; 
+            margin: 0 auto 20px auto;
             box-shadow: 0 0 15px rgba(0, 170, 255, 0.7); 
             transition: all 0.3s ease-in-out; 
         }
-        .large-circular-image:hover { box-shadow: 0 0 25px rgba(0, 170, 255, 1), 0 0 40px rgba(0, 170, 255, 0.5); }
-        .large-circular-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-        .rtl-mode .large-circular-image { 
-            margin-left: 30px;
-            margin-right: 100px; 
+
+        @media (min-width: 768px) {
+            .large-circular-image {
+                width: 350px; 
+                height: 350px;
+                margin-right: 30px;
+                margin-left: 100px;
+            }
         }
+
+        @media (min-width: 1024px) {
+            .large-circular-image {
+                width: 450px; 
+                height: 450px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .large-circular-image {
+                width: 500px; 
+                height: 500px;
+            }
+        }
+
+        .rtl-mode .large-circular-image { 
+            margin-left: auto;
+            margin-right: auto; 
+        }
+        @media (min-width: 768px) {
+            .rtl-mode .large-circular-image {
+                margin-left: 100px;
+                margin-right: 30px; 
+            }
+        }
+
+        .large-circular-image img { 
+            width: 100%; height: 100%; 
+            object-fit: cover; 
+            border-radius: 50%; 
+        } 
 
         .accordion-item {
             margin-bottom: 1rem;
@@ -190,7 +380,6 @@
             font-weight: 500;
             background-color: rgba(0, 255, 170, 0.2); 
             color: #00ffaa; 
-            box-shadow: 0 0 5px rgba(0, 255, 170, 0.5);
             flex-shrink: 0; 
         }
         .rtl-mode .project-tag {
@@ -202,44 +391,47 @@
 <body class="bg-dark-bg text-gray-200 aurora-bg" dir="ltr">
     <div class="aurora-overlay"></div>
 
-    <nav class="fixed top-0 w-full bg-dark-bg/90 backdrop-blur-md border-b border-dark-border z-50">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold gradient-text" data-translate-key="hero_name">Rama Albringi</div>
-                <ul class="hidden md:flex space-x-8">
-                    <li><a href="#home" class="hover:text-aurora-green transition" data-translate-key="nav_home">Home</a></li>
-                    <li><a href="#about" class="hover:text-aurora-green transition" data-translate-key="nav_about">About</a></li>
-                    <li><a href="#experience" class="hover:text-aurora-green transition" data-translate-key="nav_experience">Experience</a></li>
-                    <li><a href="#services" class="hover:text-aurora-green transition" data-translate-key="nav_services">Services</a></li>
-                    <li><a href="#Work" class="hover:text-aurora-green transition" data-translate-key="nav_work">Work</a></li>
-                    <li><a href="#testimonials" class="hover:text-aurora-green transition" data-translate-key="nav_testimonials">Testimonials</a></li>
-                    <li><a href="#contact" class="hover:text-aurora-green transition" data-translate-key="nav_contact">Contact</a></li>
-                    <li>
-                        <button id="lang-toggle-btn" class="px-3 py-1 border border-aurora-green rounded-full text-sm hover:bg-aurora-green hover:text-dark-bg transition">العربية</button>
-                    </li>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-content">
+                <div class="logo gradient-text" data-translate-key="hero_name">Rama Albringi</div>
+                
+                <ul class="desktop-menu">
+                    <li><a href="#home" data-translate-key="nav_home">Home</a></li>
+                    <li><a href="#about" data-translate-key="nav_about">About</a></li>
+                    <li><a href="#experience" data-translate-key="nav_experience">Experience</a></li>
+                    <li><a href="#services" data-translate-key="nav_services">Services</a></li>
+                    <li><a href="#Work" data-translate-key="nav_work">Work</a></li>
+                    <li><a href="#testimonials" data-translate-key="nav_testimonials">Testimonials</a></li>
+                    <li><a href="#contact" data-translate-key="nav_contact">Contact</a></li>
+                    <li><button onclick="handleLanguageToggle()" id="lang-toggle-btn" class="px-3 py-1 border border-aurora-green rounded-full text-sm hover:bg-aurora-green hover:text-dark-bg transition" style="margin: 0; padding: 0.5rem 1.25rem; font-size: 0.9rem;">العربية</button></li>
                 </ul>
-                <button class="md:hidden" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars text-xl"></i>
+
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <i class="fas fa-bars" id="menuIcon"></i>
                 </button>
-            </div>
-            <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2">
-                <a href="#home" class="block py-2 hover:text-aurora-green" data-translate-key="nav_home">Home</a>
-                <a href="#about" class="block py-2 hover:text-aurora-green" data-translate-key="nav_about">About</a>
-                <a href="#experience" class="block py-2 hover:text-aurora-green" data-translate-key="nav_experience">Experience</a>
-                <a href="#services" class="block py-2 hover:text-aurora-green" data-translate-key="nav_services">Services</a>
-                <a href="#Work" class="block py-2 hover:text-aurora-green" data-translate-key="nav_work">Work</a>
-                <a href="#testimonials" class="block py-2 hover:text-aurora-green" data-translate-key="nav_testimonials">Testimonials</a>
-                <a href="#contact" class="block py-2 hover:text-aurora-green" data-translate-key="nav_contact">Contact</a>
-                <button id="mobile-lang-toggle-btn" class="w-full text-left py-2 hover:text-aurora-green">العربية</button>
             </div>
         </div>
     </nav>
+    
+    <div class="mobile-menu-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" data-translate-key="nav_home" onclick="closeMobileMenu()">Home</a>
+        <a href="#about" data-translate-key="nav_about" onclick="closeMobileMenu()">About</a>
+        <a href="#experience" data-translate-key="nav_experience" onclick="closeMobileMenu()">Experience</a>
+        <a href="#services" data-translate-key="nav_services" onclick="closeMobileMenu()">Services</a>
+        <a href="#Work" data-translate-key="nav_work" onclick="closeMobileMenu()">Work</a>
+        <a href="#testimonials" data-translate-key="nav_testimonials" onclick="closeMobileMenu()">Testimonials</a>
+        <a href="#contact" data-translate-key="nav_contact" onclick="closeMobileMenu()">Contact</a>
+        <button class="mobile-lang-btn" id="mobile-lang-toggle-btn" onclick="handleLanguageToggle()">العربية</button>
+    </div>
 
     <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative">
         <div class="container mx-auto px-6 text-center z-10">
             <div class="animate-slide-up">
                 <h1 class="text-5xl md:text-7xl font-bold mb-4">
-                <span class="gradient-text" data-translate-key="hero_name">Rama Albringi</span>
+                    <span class="gradient-text" data-translate-key="hero_name">Rama Albringi</span>
                 </h1>
                 <p class="text-xl md:text-2xl text-gray-400 mb-8" data-translate-key="hero_title">Financial Analyst | Feasibility Studies Expert | Management Consultant</p>
                 <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-12" data-translate-key="hero_description">
@@ -253,15 +445,17 @@
                         Download CV
                     </a>
                 </div>
-               <div class="mt-12 flex justify-center gap-6">
-                <a href="https://www.linkedin.com/in/rama-albringi/" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-aurora-blue transition"><i class="fab fa-linkedin"></i></a>
-                <a href="https://wa.me/963944364249" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-aurora-green transition">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="mailto:Ramaalbrin@gmail.com" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-aurora-pink transition">
-                    <i class="fas fa-envelope"></i>
-                </a>
+                <div class="mt-12 flex justify-center gap-6">
+                    <a href="https://www.linkedin.com/in/rama-albringi/" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-aurora-blue transition"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://wa.me/963944364249" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-aurora-green transition">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:Ramaalbrin@gmail.com" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-aurora-pink transition">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
             </div>
+        </div>
         
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <div class="absolute w-2 h-2 bg-aurora-green rounded-full animate-float" style="top: 20%; left: 10%;"></div>
@@ -294,8 +488,8 @@
     <section id="about" class="py-20 relative">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-translate-key="about_title">About Me</h2>
-            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 order-2 md:order-1">
                     <p class="text-gray-400 leading-relaxed" data-translate-key="about_text_1">
                         Hi I'm Rama, a Syrian-educated Certified Public Accountant (CPA) and Chief Financial Officer with extensive experience in Finance, Accounting, and Auditing. I have a demonstrated history of working in the non-profit organization management industry. Skilled in Nonprofit Organizations, Corporate Social Responsibility, Analytical Skills, Coaching, and Teamwork. A strong accounting professional graduated from ASCA Syria.
                     </p>
@@ -313,14 +507,14 @@
                             <div class="text-sm text-gray-400" data-translate-key="stat_satisfaction">Client Satisfaction</div>
                         </div>
                         <div class="sm:col-span-2">
-                           <div class="max-w-xs mx-auto bg-aurora-blue/20 p-4 rounded-lg border border-dark-border text-center card-hover blue-glow">
+                            <div class="max-w-xs mx-auto bg-aurora-blue/20 p-4 rounded-lg border border-dark-border text-center card-hover blue-glow">
                                 <div class="text-3xl font-bold text-aurora-blue">10+</div>
                                 <div class="text-sm text-gray-400" data-translate-key="stat_years">Years Experience</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="relative flex justify-center md:justify-end items-center"> 
+                <div class="relative flex justify-center md:justify-end items-center order-1 md:order-2"> 
                     <div class="large-circular-image">
                         <img src="Photo.png" alt="Rama Albringi Portfolio Photo" class="w-full h-full object-cover" onerror="this.style.border='3px solid #ff00aa'; this.style.backgroundColor='#1a1f2e'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='40px'; this.outerHTML='<div class=\'large-circular-image flex items-center justify-center text-5xl bg-dark-card border-none\'>📷</div>'">
                     </div>
@@ -329,7 +523,6 @@
         </div>
     </section>
 
-    <!-- Experience Section - الكود الأصلي كامل بدون تغيير -->
     <section id="experience" class="py-20 bg-dark-card/30">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-translate-key="exp_title">Work Experience</h2>
@@ -344,7 +537,7 @@
                         </div>
                         <p class="text-gray-300 font-medium mb-2" data-translate-key="exp_cfosa_company">Al Amoudi for Accounting Consultations</p>
                         <p class="text-gray-400" data-translate-key="exp_cfosa_desc">
-                            Specializing in feasibility studies and tender proposals for the Etimad platform. Providing data-driven insights and strategic planning. My aim: to ensure top search rankings while delivering value-packed, user-friendly articles that resonate with the target audience.
+                            Specializing in feasibility studies and tender proposals for the Etimad platform. Providing data-driven insights and strategic planning.
                         </p>
                         <div class="flex flex-wrap gap-2 mt-4">
                             <span class="px-2 py-1 bg-aurora-green/20 text-aurora-green rounded text-xs" data-translate-key="exp_cfosa_tag1">Feasibility Studies</span>
@@ -378,7 +571,6 @@
                     <div class="bg-dark-card p-6 rounded-lg card-hover purple-glow">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-semibold text-aurora-purple" data-translate-key="exp_fe_title">Finance Expert</h3>
-                            <span class="text-sm text-gray-400" data-translate-key="exp_fe_date">May 2023 - May 2024</span>
                         </div>
                         <p class="text-gray-300 font-medium mb-2" data-translate-key="exp_fe_company">Admin Consultant Office - Freelance</p>
                         <p class="text-gray-400" data-translate-key="exp_fe_desc">
@@ -397,7 +589,6 @@
                     <div class="bg-dark-card p-6 rounded-lg card-hover green-glow">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-semibold text-aurora-green" data-translate-key="exp_fc_title">Freelance Consultant</h3>
-                            <span class="text-sm text-gray-400" data-translate-key="exp_fc_date">Dec 2020 - Dec 2021</span>
                         </div>
                         <p class="text-gray-300 font-medium mb-2" data-translate-key="exp_fc_company">Global Accounting Software Support & Feasibility Studies</p>
                         <p class="text-gray-400" data-translate-key="exp_fc_desc">
@@ -416,7 +607,6 @@
                     <div class="bg-dark-card p-6 rounded-lg card-hover blue-glow">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-semibold text-aurora-blue" data-translate-key="exp_fa_title">Financial Auditor</h3>
-                            <span class="text-sm text-gray-400" data-translate-key="exp_fa_date">Dec 2019 - Dec 2020</span>
                         </div>
                         <p class="text-gray-300 font-medium mb-2" data-translate-key="exp_fa_company">Syrian Family Planning Association</p>
                         <p class="text-gray-400" data-translate-key="exp_fa_desc">
@@ -434,7 +624,6 @@
                     <div class="bg-dark-card p-6 rounded-lg card-hover purple-glow">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-semibold text-aurora-purple" data-translate-key="exp_fm_title">Financial Manager</h3>
-                            <span class="text-sm text-gray-400" data-translate-key="exp_fm_date">Jan 2016 - Dec 2019</span>
                         </div>
                         <p class="text-gray-300 font-medium mb-2" data-translate-key="exp_fm_company">Fouz Al Baba Center for Auditing and Accounting</p>
                         <p class="text-gray-400" data-translate-key="exp_fm_desc">
@@ -452,7 +641,6 @@
                     <div class="bg-dark-card p-6 rounded-lg card-hover green-glow">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-semibold text-aurora-green" data-translate-key="exp_sa_title">Senior Accountant</h3>
-                            <span class="text-sm text-gray-400" data-translate-key="exp_sa_date">Mar 2015 - May 2016</span>
                         </div>
                         <p class="text-gray-300 font-medium mb-2" data-translate-key="exp_sa_company">Medical Care Center (MCC)</p>
                         <p class="text-gray-400" data-translate-key="exp_sa_desc">
@@ -537,14 +725,12 @@
         </div>
     </section>
 
-    <!-- Work Section - كامل -->
     <section id="Work" class="py-20 bg-dark-card/30">
         <div class="container mx-auto px-6 max-w-4xl">
             <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-translate-key="work_title">Work</h2>
             
             <div id="accordion-container" class="space-y-4">
                 
-                <!-- Category 1 -->
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion('content-1')">
                         <div class="flex items-center">
@@ -606,7 +792,6 @@
                     </div>
                 </div>
 
-                <!-- Category 2 -->
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion('content-2')">
                         <div class="flex items-center">
@@ -620,12 +805,10 @@
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_2_1">Technical & Financial Proposal - Investment Factory Project</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_syria">Syria</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_2_2">Sales Report - Health & Water Needs</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_syria">Syria</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
@@ -638,7 +821,6 @@
                     </div>
                 </div>
 
-                <!-- Category 3 -->
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion('content-3')">
                         <div class="flex items-center">
@@ -652,7 +834,6 @@
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_3_1">Real Estate Development Expansion Project</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
@@ -661,17 +842,14 @@
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_3_3">Vegetable Store Project</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_3_4">Medical Devices Center Project</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Category 4 -->
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion('content-4')">
                         <div class="flex items-center">
@@ -685,17 +863,14 @@
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_4_1">Investment Factory Project</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_syria">Syria</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_4_2">Vegetable Preparation Factory</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_syria">Syria</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_4_3">Block Factory</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_syria">Syria</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
@@ -704,12 +879,10 @@
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_4_5">Automotive Oil Supply & Filters Project</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Category 5 -->
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion('content-5')">
                         <div class="flex items-center">
@@ -723,17 +896,14 @@
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_5_1">Environmental Camp Project</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_5_2">Agricultural Land Request Project</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_oman">Oman</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_5_3">Fish Farm Project</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
@@ -742,7 +912,6 @@
                     </div>
                 </div>
 
-                <!-- Category 6 -->
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion('content-6')">
                         <div class="flex items-center">
@@ -760,7 +929,6 @@
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_6_2">Financial Study - Charity Projects in Saudi Arabia</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
@@ -773,7 +941,6 @@
                     </div>
                 </div>
                 
-                <!-- Category 7 -->
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion('content-7')">
                         <div class="flex items-center">
@@ -787,12 +954,10 @@
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_7_1">Delivery App Feasibility Study</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_7_2">Taxi App Business Plan</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_egypt">Egypt</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
@@ -801,23 +966,19 @@
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_7_4">"Tour Guide Booking" App</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_7_5">E-Marketing Company Feasibility Study</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Category 8 -->
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion('content-8')">
                         <div class="flex items-center">
                             <i class="fas fa-utensils accordion-icon"></i>
                             <span data-translate-key="cat_8_title">8. Hotels, Restaurants & Cafes</span>
-                            <span class="text-sm ml-2 mr-2 opacity-70" data-translate-key="cat_8_count">(5 Projects)</span>
                         </div>
                         <i id="arrow-8" class="fas fa-chevron-down text-aurora-green transition-transform duration-300"></i>
                     </div>
@@ -825,17 +986,14 @@
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_8_1">Al-Bouaha Winter Hotel</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_8_2">Restaurant Project - Oman</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_oman">Oman</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_8_3">Restaurant & Global Agencies Project</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_oman">Oman</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
@@ -848,13 +1006,11 @@
                     </div>
                 </div>
                 
-                <!-- Category 9 -->
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion('content-9')">
                         <div class="flex items-center">
                             <i class="fas fa-truck accordion-icon"></i>
                             <span data-translate-key="cat_9_title">9. Transport & Logistics</span>
-                            <span class="text-sm ml-2 mr-2 opacity-70" data-translate-key="cat_9_count">(3 Projects)</span>
                         </div>
                         <i id="arrow-9" class="fas fa-chevron-down text-aurora-green transition-transform duration-300"></i>
                     </div>
@@ -862,7 +1018,6 @@
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_9_1">Al-Sayegh Transport Expansion</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
@@ -875,13 +1030,11 @@
                     </div>
                 </div>
                 
-                <!-- Category 10 -->
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion('content-10')">
                         <div class="flex items-center">
                             <i class="fas fa-city accordion-icon"></i>
                             <span data-translate-key="cat_10_title">10. Real Estate & Development</span>
-                            <span class="text-sm ml-2 mr-2 opacity-70" data-translate-key="cat_10_count">(4 Projects)</span>
                         </div>
                         <i id="arrow-10" class="fas fa-chevron-down text-aurora-green transition-transform duration-300"></i>
                     </div>
@@ -889,17 +1042,14 @@
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_10_1">Real Estate Development Company</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_10_2">Exhibition & Conference Hall</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_10_3">Decoration Installation Company</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
@@ -908,13 +1058,11 @@
                     </div>
                 </div>
 
-                <!-- Category 11 -->
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion('content-11')">
                         <div class="flex items-center">
                             <i class="fas fa-cogs accordion-icon"></i>
                             <span data-translate-key="cat_11_title">11. Other Specialized Projects</span>
-                            <span class="text-sm ml-2 mr-2 opacity-70" data-translate-key="cat_11_count">(4 Projects)</span>
                         </div>
                         <i id="arrow-11" class="fas fa-chevron-down text-aurora-green transition-transform duration-300"></i>
                     </div>
@@ -922,17 +1070,14 @@
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_11_1">Car Showroom Project</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_11_2">Car Repair Workshop</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_ksa">KSA</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
                             <span data-translate-key="proj_11_3">Economic Feasibility - Pearl Qatar</span>
-                            <div class="project-tag-container"><span class="project-tag" data-translate-key="tag_qatar">Qatar</span></div>
                         </div>
                         <div class="accordion-title">
                             <i class="fas fa-chevron-right arrow"></i>
@@ -942,16 +1087,15 @@
                 </div>
 
             </div>
+            </div>
         </div>
     </section>
 
-    <!-- Testimonials Section - التقييمات الحقيقية -->
     <section id="testimonials" class="py-20">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-translate-key="testimonials_title">Client Testimonials</h2>
             <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
                 
-                <!-- Review 1: Anwar A -->
                 <div class="bg-dark-card p-6 rounded-lg card-hover blue-glow">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-aurora-green to-aurora-blue flex items-center justify-center text-xl font-bold text-dark-bg">
@@ -959,7 +1103,6 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="font-semibold" data-translate-key="review_1_name">Anwar A</h4>
-                            <p class="text-sm text-gray-400" data-translate-key="review_1_title">Client</p>
                         </div>
                     </div>
                     <p class="text-gray-400 italic leading-relaxed" data-translate-key="review_1_text">
@@ -974,7 +1117,6 @@
                     </div>
                 </div>
 
-                <!-- Review 2: Jana S -->
                 <div class="bg-dark-card p-6 rounded-lg card-hover purple-glow">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-aurora-purple to-aurora-pink flex items-center justify-center text-xl font-bold text-dark-bg">
@@ -982,7 +1124,6 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="font-semibold" data-translate-key="review_2_name">Jana S</h4>
-                            <p class="text-sm text-gray-400" data-translate-key="review_2_title">Client</p>
                         </div>
                     </div>
                     <p class="text-gray-400 italic leading-relaxed" data-translate-key="review_2_text">
@@ -997,7 +1138,6 @@
                     </div>
                 </div>
 
-                <!-- Review 3: Ali H -->
                 <div class="bg-dark-card p-6 rounded-lg card-hover green-glow">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-aurora-blue to-aurora-green flex items-center justify-center text-xl font-bold text-dark-bg">
@@ -1005,7 +1145,6 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="font-semibold" data-translate-key="review_3_name">Ali H</h4>
-                            <p class="text-sm text-gray-400" data-translate-key="review_3_title">Client</p>
                         </div>
                     </div>
                     <p class="text-gray-400 italic leading-relaxed" data-translate-key="review_3_text">
@@ -1020,7 +1159,6 @@
                     </div>
                 </div>
 
-                <!-- Review 4: Fahad N -->
                 <div class="bg-dark-card p-6 rounded-lg card-hover pink-glow">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-aurora-pink to-aurora-blue flex items-center justify-center text-xl font-bold text-dark-bg">
@@ -1028,7 +1166,6 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="font-semibold" data-translate-key="review_4_name">Fahad N</h4>
-                            <p class="text-sm text-gray-400" data-translate-key="review_4_title">Client</p>
                         </div>
                     </div>
                     <p class="text-gray-400 italic leading-relaxed" data-translate-key="review_4_text">
@@ -1043,7 +1180,6 @@
                     </div>
                 </div>
 
-                <!-- Review 5: Omar M (Engineer) -->
                 <div class="bg-dark-card p-6 rounded-lg card-hover blue-glow">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-aurora-green to-aurora-purple flex items-center justify-center text-xl font-bold text-dark-bg">
@@ -1051,7 +1187,6 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="font-semibold" data-translate-key="review_5_name">Eng. Omar M</h4>
-                            <p class="text-sm text-gray-400" data-translate-key="review_5_title">Engineer</p>
                         </div>
                     </div>
                     <p class="text-gray-400 italic leading-relaxed" data-translate-key="review_5_text">
@@ -1066,7 +1201,6 @@
                     </div>
                 </div>
 
-                <!-- Review 6: Mohammed Hassan H -->
                 <div class="bg-dark-card p-6 rounded-lg card-hover purple-glow">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-aurora-blue to-aurora-pink flex items-center justify-center text-xl font-bold text-dark-bg">
@@ -1074,7 +1208,6 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="font-semibold" data-translate-key="review_6_name">Mohammed Hassan H</h4>
-                            <p class="text-sm text-gray-400" data-translate-key="review_6_title">Client</p>
                         </div>
                     </div>
                     <p class="text-gray-400 italic leading-relaxed" data-translate-key="review_6_text">
@@ -1089,7 +1222,6 @@
                     </div>
                 </div>
 
-                <!-- Review 7: Nora A -->
                 <div class="bg-dark-card p-6 rounded-lg card-hover green-glow">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-aurora-green to-aurora-blue flex items-center justify-center text-xl font-bold text-dark-bg">
@@ -1097,7 +1229,6 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="font-semibold" data-translate-key="review_7_name">Nora A</h4>
-                            <p class="text-sm text-gray-400" data-translate-key="review_7_title">Client</p>
                         </div>
                     </div>
                     <p class="text-gray-400 italic leading-relaxed" data-translate-key="review_7_text">
@@ -1112,7 +1243,6 @@
                     </div>
                 </div>
 
-                <!-- Review 8: Suruj Global -->
                 <div class="bg-dark-card p-6 rounded-lg card-hover pink-glow">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-aurora-pink to-aurora-purple flex items-center justify-center text-xl font-bold text-dark-bg">
@@ -1120,7 +1250,6 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="font-semibold" data-translate-key="review_8_name">Suruj Global</h4>
-                            <p class="text-sm text-gray-400" data-translate-key="review_8_title">Company</p>
                         </div>
                     </div>
                     <p class="text-gray-400 italic leading-relaxed" data-translate-key="review_8_text">
@@ -1139,7 +1268,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="py-20 bg-dark-card/30">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-translate-key="contact_title">Get In Touch</h2>
@@ -1178,8 +1306,8 @@
                     </div>
 
                     <form class="space-y-4" action="https://formsubmit.co/nermeen.12802351@gmail.com" method="POST">
-                        <input type="text" placeholder="Your Name" class="w-full px-4 py-3 bg-dark-card border border-dark-border rounded-lg focus:outline-none focus:border-aurora-green">
-                        <input type="email"placeholder="Your Email" class="w-full px-4 py-3 bg-dark-card border border-dark-border rounded-lg focus:outline-none focus:border-aurora-green">
+                        <input type="text" data-translate-key="contact_name_placeholder" placeholder="Your Name" class="w-full px-4 py-3 bg-dark-card border border-dark-border rounded-lg focus:outline-none focus:border-aurora-green">
+                        <input type="email" data-translate-key="contact_email_placeholder" placeholder="Your Email" class="w-full px-4 py-3 bg-dark-card border border-dark-border rounded-lg focus:outline-none focus:border-aurora-green">
                         <textarea data-translate-key="contact_message_placeholder" placeholder="Your Message" rows="4" class="w-full px-4 py-3 bg-dark-card border border-dark-border rounded-lg focus:outline-none focus:border-aurora-green"></textarea>
                         <button type="submit" class="w-full px-8 py-3 bg-gradient-to-r from-aurora-green to-aurora-blue rounded-lg text-dark-bg font-semibold hover:shadow-lg hover:shadow-aurora-green/50 transition transform hover:scale-105" data-translate-key="contact_send">
                             Send Message
@@ -1192,20 +1320,21 @@
 
     <footer class="py-8 border-t border-dark-border">
         <div class="container mx-auto px-6 text-center">
-           <div class="mb-4 flex justify-center gap-6">
-            <a href="https://www.linkedin.com/in/rama-albringi/" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-aurora-blue transition"><i class="fab fa-linkedin"></i></a>
-            <a href="https://wa.me/963944364249" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-aurora-green transition">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="mailto:Ramaalbrin@gmail.com" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-aurora-pink transition">
-                <i class="fas fa-envelope"></i>
-            </a>
-        </div>
-            <p class="text-gray-400" data-translate-key="footer_text">© 2025  Nermeen Abu_Essa. All rights reserved.</p>
+            <div class="mb-4 flex justify-center gap-6">
+                <a href="https://www.linkedin.com/in/rama-albringi/" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-aurora-blue transition"><i class="fab fa-linkedin"></i></a>
+                <a href="https://wa.me/963944364249" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-aurora-green transition">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="mailto:Ramaalbrin@gmail.com" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-aurora-pink transition">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p class="text-gray-400" data-translate-key="footer_text">© 2025 Nermeen Abu_Essa. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        // Accordion function
         function toggleAccordion(contentId) {
             const content = document.getElementById(contentId);
             const header = content.previousElementSibling;
@@ -1225,6 +1354,43 @@
             if(arrow) arrow.classList.toggle('rotate-180');
         }
 
+        // Mobile Menu
+        let mobileMenuOpen = false;
+
+        function toggleMobileMenu() {
+            mobileMenuOpen = !mobileMenuOpen;
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            const icon = document.getElementById('menuIcon');
+            
+            if (mobileMenuOpen) {
+                menu.classList.add('active');
+                overlay.classList.add('active');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.remove('active');
+                overlay.classList.remove('active');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeMobileMenu() {
+            if (mobileMenuOpen) {
+                toggleMobileMenu();
+            }
+        }
+        
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768 && mobileMenuOpen) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Translation system
         const translations = {
             'en': {
                 'nav_home': 'Home', 'nav_about': 'About', 'nav_experience': 'Experience', 'nav_services': 'Services', 'nav_work': 'Work', 'nav_testimonials': 'Testimonials', 'nav_contact': 'Contact',
@@ -1234,11 +1400,11 @@
                 'exp_title': 'Work Experience',
                 'exp_cfosa_title': 'Financial Consultant and CFO in Saudi Arabia', 'exp_cfosa_company': 'Al Amoudi for Accounting Consultations', 'exp_cfosa_date': 'Jan 2024 - Present', 'exp_cfosa_desc': 'Specializing in feasibility studies and tender proposals for the Etimad platform. Providing data-driven insights and strategic planning.', 'exp_cfosa_tag1': 'Feasibility Studies', 'exp_cfosa_tag2': 'Financial Analysis', 'exp_cfosa_tag3': 'Strategic Planning', 
                 'exp_pmo_title': 'Project Management Officer', 'exp_pmo_company': 'Saudi Tadawul Group - Freelance', 'exp_pmo_date': 'Apr 2022 - May 2024', 'exp_pmo_desc': 'Involved in Project Management, PMO setup, and Financial Statements analysis.', 'exp_pmo_tag1': 'Project Management', 'exp_pmo_tag2': 'PMO', 'exp_pmo_tag3': 'Financial Statements',
-                'exp_fe_title': 'Finance Expert', 'exp_fe_company': 'Admin Consultant Office - Freelance', 'exp_fe_date': 'May 2023 - May 2024', 'exp_fe_desc': 'Skills: Nonprofits, Budgeting, Organizational Development, Business Strategy, Accounting, Financial Advisory, Corporate Finance, and Financial Analysis.', 'exp_fe_tag1': 'Budgeting', 'exp_fe_tag2': 'Corporate Finance', 'exp_fe_tag3': 'Nonprofits',
-                'exp_fc_title': 'Freelance Consultant', 'exp_fc_company': 'Global Accounting Software Support & Feasibility Studies', 'exp_fc_date': 'Dec 2020 - Dec 2021', 'exp_fc_desc': 'Financial Management - Technical support for global accounting software - Feasibility studies and financial analysis', 'exp_fc_tag1': 'Multinational Companies', 'exp_fc_tag2': 'Saudi Arabia', 'exp_fc_tag3': 'UAE', 
-                'exp_fa_title': 'Financial Auditor', 'exp_fa_company': 'Syrian Family Planning Association', 'exp_fa_date': 'Dec 2019 - Dec 2020', 'exp_fa_desc': 'Auditing accounts of projects funded by UNDP and UNICEF', 'exp_fa_tag1': 'NGO', 'exp_fa_tag2': 'Project Funding', 
-                'exp_fm_title': 'Financial Manager', 'exp_fm_company': 'Fouz Al Baba Center for Auditing and Accounting', 'exp_fm_date': 'Jan 2016 - Dec 2019', 'exp_fm_desc': 'Financial management - Accounting services - External auditing services', 'exp_fm_tag1': 'Team Leadership', 'exp_fm_tag2': 'Financial Strategy', 
-                'exp_sa_title': 'Senior Accountant', 'exp_sa_company': 'Medical Care Center (MCC)', 'exp_sa_date': 'Mar 2015 - May 2016', 'exp_sa_desc': 'The only TPA company in Syria', 'exp_sa_tag1': 'Healthcare', 'exp_sa_tag2': 'Insurance',
+                'exp_fe_title': 'Finance Expert', 'exp_fe_company': 'Admin Consultant Office - Freelance', 'exp_fe_desc': 'Skills: Nonprofits, Budgeting, Organizational Development, Business Strategy, Accounting, Financial Advisory, Corporate Finance, and Financial Analysis.', 'exp_fe_tag1': 'Budgeting', 'exp_fe_tag2': 'Corporate Finance', 'exp_fe_tag3': 'Nonprofits',
+                'exp_fc_title': 'Freelance Consultant', 'exp_fc_company': 'Global Accounting Software Support & Feasibility Studies', 'exp_fc_desc': 'Financial Management - Technical support for global accounting software - Feasibility studies and financial analysis', 'exp_fc_tag1': 'Multinational Companies', 'exp_fc_tag2': 'Saudi Arabia', 'exp_fc_tag3': 'UAE', 
+                'exp_fa_title': 'Financial Auditor', 'exp_fa_company': 'Syrian Family Planning Association', 'exp_fa_desc': 'Auditing accounts of projects funded by UNDP and UNICEF', 'exp_fa_tag1': 'NGO', 'exp_fa_tag2': 'Project Funding', 
+                'exp_fm_title': 'Financial Manager', 'exp_fm_company': 'Fouz Al Baba Center for Auditing and Accounting', 'exp_fm_desc': 'Financial management - Accounting services - External auditing services', 'exp_fm_tag1': 'Team Leadership', 'exp_fm_tag2': 'Financial Strategy', 
+                'exp_sa_title': 'Senior Accountant', 'exp_sa_company': 'Medical Care Center (MCC)', 'exp_sa_desc': 'The only TPA company in Syria', 'exp_sa_tag1': 'Healthcare', 'exp_sa_tag2': 'Insurance',
                 'services_title': 'Services',
                 'service_feasibility_title': 'Feasibility Studies', 'service_feasibility_desc': 'Comprehensive project feasibility analysis including market, financial, and operational evaluations to ensure investment success.',
                 'service_business_plans_title': 'Business Plans', 'service_business_plans_desc': 'Professional business plans for startups and SMEs to attract investors and guide strategic growth.',
@@ -1248,93 +1414,92 @@
                 'service_financial_reports_title': 'Financial Reports & Analysis', 'service_financial_reports_desc': 'Detailed reports and advanced analysis that support informed decision-making and evaluate business performance.',
                 'work_title': 'Work',
                 'cat_1_title': '1. Economic & Financial Feasibility Studies', 'cat_1_count': '(10 Projects)',
-                'proj_1_1': 'Financial Study - Al-Bouaha Winter Hotel',
-                'proj_1_2': 'Financial Study - Block Factory',
-                'proj_1_3': 'Financial Study - Jowik Application',
-                'proj_1_4': 'Financial Study - Dawatec Factory',
-                'proj_1_5': 'Financial Report - Al-Kharj Game Hall',
-                'proj_1_6': 'Financial Study for Charitable Associations Projects',
-                'proj_1_7': 'Financial Study - Real Estate Development Company',
-                'proj_1_8': 'Financial Study - Pearl Hotel',
-                'proj_1_9': 'Financial Study - Expansion of Al-Sayegh Transport Company',
-                'proj_1_10': 'Financial Study - Hotel Complex Expansion for Carriers',
-                
-                'cat_2_title': '2. Technical & Financial Proposals', 'cat_2_count': '(4 Projects)',
-                'proj_2_1': 'Technical & Financial Proposal - Investment Factory Project',
-                'proj_2_2': 'Sales Report - Health & Water Needs',
-                'proj_2_3': 'Sales Report - Health Company and Water Distribution Factory',
-                'proj_2_4': 'Technical & Financial Proposal - Expansion of Al-Sayegh Transport Company',
+                'proj_1_1': 'Financial Study - Al-Bouaha Winter Hotel',
+                'proj_1_2': 'Financial Study - Block Factory',
+                'proj_1_3': 'Financial Study - Jowik Application',
+                'proj_1_4': 'Financial Study - Dawatec Factory',
+                'proj_1_5': 'Financial Report - Al-Kharj Game Hall',
+                'proj_1_6': 'Financial Study for Charitable Associations Projects',
+                'proj_1_7': 'Financial Study - Real Estate Development Company',
+                'proj_1_8': 'Financial Study - Pearl Hotel',
+                'proj_1_9': 'Financial Study - Expansion of Al-Sayegh Transport Company',
+                'proj_1_10': 'Financial Study - Hotel Complex Expansion for Carriers',
+                
+                'cat_2_title': '2. Technical & Financial Proposals', 'cat_2_count': '(4 Projects)',
+                'proj_2_1': 'Technical & Financial Proposal - Investment Factory Project',
+                'proj_2_2': 'Sales Report - Health & Water Needs',
+                'proj_2_3': 'Sales Report - Health Company and Water Distribution Factory',
+                'proj_2_4': 'Technical & Financial Proposal - Expansion of Al-Sayegh Transport Company',
 
-                'cat_3_title': '3. Investment & Commercial Projects', 'cat_3_count': '(4 Projects)',
-                'proj_3_1': 'Real Estate Development Expansion Project',
-                'proj_3_2': 'Building Platform Development Project',
-                'proj_3_3': 'Vegetable Store Project',
-                'proj_3_4': 'Medical Devices Center Project',
+                'cat_3_title': '3. Investment & Commercial Projects', 'cat_3_count': '(4 Projects)',
+                'proj_3_1': 'Real Estate Development Expansion Project',
+                'proj_3_2': 'Building Platform Development Project',
+                'proj_3_3': 'Vegetable Store Project',
+                'proj_3_4': 'Medical Devices Center Project',
 
-                'cat_4_title': '4. Industrial & Factory Projects', 'cat_4_count': '(5 Projects)',
-                'proj_4_1': 'Investment Factory Project',
-                'proj_4_2': 'Vegetable Preparation Factory',
-                'proj_4_3': 'Block Factory',
-                'proj_4_4': 'Dawatec Factory Expansion',
-                'proj_4_5': 'Automotive Oil Supply & Filters Project',
+                'cat_4_title': '4. Industrial & Factory Projects', 'cat_4_count': '(5 Projects)',
+                'proj_4_1': 'Investment Factory Project',
+                'proj_4_2': 'Vegetable Preparation Factory',
+                'proj_4_3': 'Block Factory',
+                'proj_4_4': 'Dawatec Factory Expansion',
+                'proj_4_5': 'Automotive Oil Supply & Filters Project',
 
-                'cat_5_title': '5. Environmental & Agricultural Projects', 'cat_5_count': '(4 Projects)',
-                'proj_5_1': 'Environmental Camp Project',
-                'proj_5_2': 'Agricultural Land Request Project',
-                'proj_5_3': 'Fish Farm Project',
-                'proj_5_4': 'Eye Drops Project (Moisturizing & Distribution)',
+                'cat_5_title': '5. Environmental & Agricultural Projects', 'cat_5_count': '(4 Projects)',
+                'proj_5_1': 'Environmental Camp Project',
+                'proj_5_2': 'Agricultural Land Request Project',
+                'proj_5_3': 'Fish Farm Project',
+                'proj_5_4': 'Eye Drops Project (Moisturizing & Distribution)',
 
-                'cat_6_title': '6. Public Services & Charity Projects', 'cat_6_count': '(4 Projects)',
-                'proj_6_1': 'Operational Plan - "Emaar Mosques" Association',
-                'proj_6_2': 'Financial Study - Charity Projects',
-                'proj_6_3': 'E-Store Service Packages',
-                'proj_6_4': 'Feasibility Study - Hajj & Umrah Services',
+                'cat_6_title': '6. Public Services & Charity Projects', 'cat_6_count': '(4 Projects)',
+                'proj_6_1': 'Operational Plan - "Emaar Mosques" Association',
+                'proj_6_2': 'Financial Study - Charity Projects',
+                'proj_6_3': 'E-Store Service Packages',
+                'proj_6_4': 'Feasibility Study - Hajj & Umrah Services',
 
-                'cat_7_title': '7. Applications & Digital Platforms', 'cat_7_count': '(5 Projects)',
-                'proj_7_1': 'Delivery App Feasibility Study',
-                'proj_7_2': 'Taxi App Business Plan',
-                'proj_7_3': '"Jowik" Platform Feasibility Study',
-                'proj_7_4': '"Tour Guide Booking" App',
-                'proj_7_5': 'E-Marketing Company Feasibility Study',
+                'cat_7_title': '7. Applications & Digital Platforms', 'cat_7_count': '(5 Projects)',
+                'proj_7_1': 'Delivery App Feasibility Study',
+                'proj_7_2': 'Taxi App Business Plan',
+                'proj_7_3': '"Jowik" Platform Feasibility Study',
+                'proj_7_4': '"Tour Guide Booking" App',
+                'proj_7_5': 'E-Marketing Company Feasibility Study',
 
-                'cat_8_title': '8. Hotels, Restaurants & Cafes', 'cat_8_count': '(5 Projects)',
-                'proj_8_1': 'Al-Bouaha Winter Hotel',
-                'proj_8_2': 'Restaurant Project',
-                'proj_8_3': 'Restaurant & Global Agencies Project',
-                'proj_8_4': 'Café & Restaurant Management Project',
-                'proj_8_5': 'Hotel Complex Expansion for Carriers',
+                'cat_8_title': '8. Hotels, Restaurants & Cafes',
+                'proj_8_1': 'Al-Bouaha Winter Hotel',
+                'proj_8_2': 'Restaurant Project',
+                'proj_8_3': 'Restaurant & Global Agencies Project',
+                'proj_8_4': 'Café & Restaurant Management Project',
+                'proj_8_5': 'Hotel Complex Expansion for Carriers',
 
-                'cat_9_title': '9. Transport & Logistics', 'cat_9_count': '(3 Projects)',
-                'proj_9_1': 'Al-Sayegh Transport Expansion',
-                'proj_9_2': '3-Year Expansion - Al-Sayegh Transport',
-                'proj_9_3': 'Hotel Complex Expansion for Carriers',
+                'cat_9_title': '9. Transport & Logistics',
+                'proj_9_1': 'Al-Sayegh Transport Expansion',
+                'proj_9_2': '3-Year Expansion - Al-Sayegh Transport',
+                'proj_9_3': 'Hotel Complex Expansion for Carriers',
 
-                'cat_10_title': '10. Real Estate & Development', 'cat_10_count': '(4 Projects)',
-                'proj_10_1': 'Real Estate Development Company',
-                'proj_10_2': 'Exhibition & Conference Hall',
-                'proj_10_3': 'Decoration Installation Company',
-                'proj_10_4': 'Hotel Complex Expansion',
+                'cat_10_title': '10. Real Estate & Development',
+                'proj_10_1': 'Real Estate Development Company',
+                'proj_10_2': 'Exhibition & Conference Hall',
+                'proj_10_3': 'Decoration Installation Company',
+                'proj_10_4': 'Hotel Complex Expansion',
 
-                'cat_11_title': '11. Other Specialized Projects', 'cat_11_count': '(4 Projects)',
-                'proj_11_1': 'Car Showroom Project',
-                'proj_11_2': 'Car Repair Workshop',
-                'proj_11_3': 'Economic Feasibility',
-                'proj_11_4': 'Autologous Bone Marrow Technology',
+                'cat_11_title': '11. Other Specialized Projects',
+                'proj_11_1': 'Car Showroom Project',
+                'proj_11_2': 'Car Repair Workshop',
+                'proj_11_3': 'Economic Feasibility',
+                'proj_11_4': 'Autologous Bone Marrow Technology',
 
-                // Tags
-                'tag_ksa': 'KSA', 'tag_syria': 'Syria', 'tag_syria_tr': 'Syria/Turkey', 'tag_qatar': 'Qatar', 'tag_oman': 'Oman', 'tag_egypt': 'Egypt',
+                'tag_ksa': 'KSA', 'tag_syria': 'Syria', 'tag_syria_tr': 'Syria/Turkey', 'tag_qatar': 'Qatar',
 
                 'testimonials_title': 'Client Testimonials',
-                'review_1_initials': 'AA', 'review_1_name': 'Anwar A', 'review_1_title': 'Client', 'review_1_text': '"The service is absolutely excellent! The service provider is a wonderful person — very humble and kind. I sincerely wish her all success in her professional journey and life. Highly recommended to work with her."',
-                'review_2_initials': 'JS', 'review_2_name': 'Jana S', 'review_2_title': 'Client', 'review_2_text': '"Very cooperative and fast in execution. Most importantly, she always makes sure that the client is fully satisfied with the work. Honestly, she did a great job!"',
-                'review_3_initials': 'AH', 'review_3_name': 'Ali H', 'review_3_title': 'Client', 'review_3_text': '"Mashallah, her work is clean and professional, and her manners are exceptional. May Allah bless her — I will definitely collaborate with her again on future projects. Thank you so much!"',
-                'review_4_initials': 'FN', 'review_4_name': 'Fahad N', 'review_4_title': 'Client', 'review_4_text': '"Ms. Rama is truly creative, and the results exceeded expectations. I thank her and highly recommend working with her."',
-                'review_5_initials': 'OM', 'review_5_name': 'Eng. Omar M', 'review_5_title': 'Engineer', 'review_5_text': '"Thank you very much, Ms. Rama, for your effort in completing the feasibility study for my project. You were truly trustworthy, professional, and delivered results that exceeded even the big companies I\'ve dealt with before. May Allah bless you. I strongly recommend anyone who wants a feasibility study to work with Ms. Rama without hesitation."',
-                'review_6_initials': 'MH', 'review_6_name': 'Mohammed Hassan H', 'review_6_title': 'Client', 'review_6_text': '"Ms. Rama is diligent, pays great attention to detail, and is very cooperative."',
-                'review_7_initials': 'NA', 'review_7_name': 'Nora A', 'review_7_title': 'Client', 'review_7_text': '"Mashallah, amazing work and even better collaboration! Definitely not the last time I\'ll be working with her, Insha\'Allah."',
-                'review_8_initials': 'SG', 'review_8_name': 'Suruj Global', 'review_8_title': 'Company', 'review_8_text': '"During October 2025, we completed 2 feasibility studies prepared by the respected Ms. Rama. Sincere thanks and appreciation to Ms. Rama — truly a work and achievement to be commended. May Allah bless your days and protect you."',
-                'contact_title': 'Get In Touch', 'contact_email_label': 'Email', 'contact_location_label': 'Location', 'contact_location': 'Damascus, Syria', 'contact_name_placeholder': 'Your Name', 'contact_email_placeholder': 'Your Email', 'contact_message_placeholder': 'Your Message', 'contact_send': 'Send Message',
-                'footer_text': '© 2025 Nermeen Abu_Essa . All rights reserved.'
+                'review_1_initials': 'AA', 'review_1_name': 'Anwar A', 'review_1_text': '"The service is absolutely excellent! The service provider is a wonderful person — very humble and kind. I sincerely wish her all success in her professional journey and life. Highly recommended to work with her."',
+                'review_2_initials': 'JS', 'review_2_name': 'Jana S', 'review_2_text': '"Very cooperative and fast in execution. Most importantly, she always makes sure that the client is fully satisfied with the work. Honestly, she did a great job!"',
+                'review_3_initials': 'AH', 'review_3_name': 'Ali H', 'review_3_text': '"Mashallah, her work is clean and professional, and her manners are exceptional. May Allah bless her — I will definitely collaborate with her again on future projects. Thank you so much!"',
+                'review_4_initials': 'FN', 'review_4_name': 'Fahad N', 'review_4_text': '"Ms. Rama is truly creative, and the results exceeded expectations. I thank her and highly recommend working with her."',
+                'review_5_initials': 'OM', 'review_5_name': 'Eng. Omar M', 'review_5_text': '"Thank you very much, Ms. Rama, for your effort in completing the feasibility study for my project. You were truly trustworthy, professional, and delivered results that exceeded even the big companies I\'ve dealt with before. May Allah bless you. I strongly recommend anyone who wants a feasibility study to work with Ms. Rama without hesitation."',
+                'review_6_initials': 'MH', 'review_6_name': 'Mohammed Hassan H', 'review_6_text': '"Ms. Rama is diligent, pays great attention to detail, and is very cooperative."',
+                'review_7_initials': 'NA', 'review_7_name': 'Nora A', 'review_7_text': '"Mashallah, amazing work and even better collaboration! Definitely not the last time I\'ll be working with her, Insha\'Allah."',
+                'review_8_initials': 'SG', 'review_8_name': 'Suruj Global', 'review_8_text': '"During October 2025, we completed 2 feasibility studies prepared by the respected Ms. Rama. Sincere thanks and appreciation to Ms. Rama — truly a work and achievement to be commended. May Allah bless your days and protect you."',
+                'contact_title': 'Get In Touch', 'contact_email_label': 'Email', 'contact_phone_label': 'WhatsApp', 'contact_location_label': 'Location', 'contact_location': 'Damascus, Syria', 'contact_name_placeholder': 'Your Name', 'contact_email_placeholder': 'Your Email', 'contact_message_placeholder': 'Your Message', 'contact_send': 'Send Message',
+                'footer_text': '© 2025 Nermeen Abu_Essa. All rights reserved.'
             },
             'ar': {
                 'nav_home': 'الرئيسية', 'nav_about': 'عني', 'nav_experience': 'الخبرة', 'nav_services': 'الخدمات', 'nav_work': 'أعمالي', 'nav_testimonials': 'آراء العملاء', 'nav_contact': 'اتصل بي',
@@ -1344,11 +1509,11 @@
                 'exp_title': 'الخبرة العملية',
                 'exp_cfosa_title': 'مستشار مالي ومدير مالي تنفيذي في السعودية', 'exp_cfosa_company': 'Al Amoudi for Accounting Consultations', 'exp_cfosa_date': 'يناير 2024 - حالي', 'exp_cfosa_desc': 'متخصصة في إعداد دراسات الجدوى وتقديم عروض المناقصات لمنصة اعتماد. خبرة في أبحاث السوق، والتحليل المالي، والتخطيط الاستراتيجي.', 'exp_cfosa_tag1': 'دراسات جدوى', 'exp_cfosa_tag2': 'تحليل مالي', 'exp_cfosa_tag3': 'تخطيط استراتيجي', 
                 'exp_pmo_title': 'مسؤول إدارة المشاريع', 'exp_pmo_company': 'مجموعة تداول السعودية - مستقل', 'exp_pmo_date': 'أبريل 2022 - مايو 2024', 'exp_pmo_desc': 'المشاركة في إدارة المشاريع، إنشاء مكتب إدارة المشاريع (PMO)، وتحليل القوائم المالية.', 'exp_pmo_tag1': 'إدارة مشاريع', 'exp_pmo_tag2': 'مكتب إدارة المشاريع (PMO)', 'exp_pmo_tag3': 'قوائم مالية',
-                'exp_fe_title': 'خبير مالي', 'exp_fe_company': 'مكتب الإدارة للاستشارات - مستقل', 'exp_fe_date': 'مايو 2023 - مايو 2024', 'exp_fe_desc': 'المهارات: منظمات غير ربحية، ميزانية، تطوير تنظيمي، استراتيجية أعمال، محاسبة، استشارات مالية، تمويل الشركات، والتحليل المالي.', 'exp_fe_tag1': 'إعداد الميزانيات', 'exp_fe_tag2': 'تمويل الشركات', 'exp_fe_tag3': 'منظمات غير ربحية',
-                'exp_fc_title': 'مستشار مستقل', 'exp_fc_company': 'دعم البرامج المحاسبية العالمية ودراسات الجدوى', 'exp_fc_date': 'ديسمبر 2020 - ديسمبر 2021', 'exp_fc_desc': 'إدارة مالية - دعم فني للبرامج المحاسبية العالمية - دراسات الجدوى والتحليل المالي', 'exp_fc_tag1': 'شركات متعددة الجنسيات', 'exp_fc_tag2': 'السعودية', 'exp_fc_tag3': 'الإمارات', 
-                'exp_fa_title': 'مدقق مالي', 'exp_fa_company': 'جمعية تنظيم الأسرة السورية', 'exp_fa_date': 'ديسمبر 2019 - ديسمبر 2020', 'exp_fa_desc': 'تدقيق حسابات المشاريع الممولة من قبل برنامج الأمم المتحدة الإنمائي (UNDP) واليونيسيف (UNICEF)', 'exp_fa_tag1': 'منظمات غير ربحية', 'exp_fa_tag2': 'تمويل مشاريع', 
-                'exp_fm_title': 'مدير مالي', 'exp_fm_company': 'مركز فوز آل بابا للتدقيق والمحاسبة', 'exp_fm_date': 'يناير 2016 - ديسمبر 2019', 'exp_fm_desc': 'إدارة مالية - خدمات محاسبية - خدمات تدقيق خارجي', 'exp_fm_tag1': 'قيادة فريق', 'exp_fm_tag2': 'استراتيجية مالية', 
-                'exp_sa_title': 'محاسب أول', 'exp_sa_company': 'مركز الرعاية الطبية (MCC)', 'exp_sa_date': 'مارس 2015 - مايو 2016', 'exp_sa_desc': 'الشركة الوحيدة لإدارة مطالبات التأمين (TPA) في سوريا', 'exp_sa_tag1': 'الرعاية الصحية', 'exp_sa_tag2': 'التأمين',
+                'exp_fe_title': 'خبير مالي', 'exp_fe_company': 'مكتب الإدارة للاستشارات - مستقل', 'exp_fe_desc': 'المهارات: منظمات غير ربحية، ميزانية، تطوير تنظيمي، استراتيجية أعمال، محاسبة، استشارات مالية، تمويل الشركات، والتحليل المالي.', 'exp_fe_tag1': 'إعداد الميزانيات', 'exp_fe_tag2': 'تمويل الشركات', 'exp_fe_tag3': 'منظمات غير ربحية',
+                'exp_fc_title': 'مستشار مستقل', 'exp_fc_company': 'دعم البرامج المحاسبية العالمية ودراسات الجدوى', 'exp_fc_desc': 'إدارة مالية - دعم فني للبرامج المحاسبية العالمية - دراسات الجدوى والتحليل المالي', 'exp_fc_tag1': 'شركات متعددة الجنسيات', 'exp_fc_tag2': 'السعودية', 'exp_fc_tag3': 'الإمارات', 
+                'exp_fa_title': 'مدقق مالي', 'exp_fa_company': 'جمعية تنظيم الأسرة السورية', 'exp_fa_desc': 'تدقيق حسابات المشاريع الممولة من قبل برنامج الأمم المتحدة الإنمائي (UNDP) واليونيسيف (UNICEF)', 'exp_fa_tag1': 'منظمات غير ربحية', 'exp_fa_tag2': 'تمويل مشاريع', 
+                'exp_fm_title': 'مدير مالي', 'exp_fm_company': 'مركز فوز آل بابا للتدقيق والمحاسبة', 'exp_fm_desc': 'إدارة مالية - خدمات محاسبية - خدمات تدقيق خارجي', 'exp_fm_tag1': 'قيادة فريق', 'exp_fm_tag2': 'استراتيجية مالية', 
+                'exp_sa_title': 'محاسب أول', 'exp_sa_company': 'مركز الرعاية الطبية (MCC)', 'exp_sa_desc': 'الشركة الوحيدة لإدارة مطالبات التأمين (TPA) في سوريا', 'exp_sa_tag1': 'الرعاية الصحية', 'exp_sa_tag2': 'التأمين',
                 'services_title': 'الخدمات',
                 'service_feasibility_title': 'دراسات الجدوى', 'service_feasibility_desc': 'تحليل شامل لجدوى المشاريع من الجوانب السوقية والمالية والتشغيلية لضمان نجاح الاستثمار.',
                 'service_business_plans_title': 'إعداد خطط الأعمال', 'service_business_plans_desc': 'خطط عمل احترافية للمشروعات الناشئة والصغيرة لجذب المستثمرين وتوجيه النمو الاستراتيجي.',
@@ -1357,93 +1522,92 @@
                 'service_accounting_auditing_title': 'المحاسبة والمراجعة', 'service_accounting_auditing_desc': 'إعداد ومراجعة القوائم المالية ومسك الدفاتر والمراجعة الخارجية بدقة وامتثال للمعايير.',
                 'service_financial_reports_title': 'التقارير والتحليلات المالية', 'service_financial_reports_desc': 'إعداد تقارير مالية وتحليلات متقدمة تدعم اتخاذ القرار وتقييم الأداء المالي للمؤسسات.',
                 'work_title': 'أعمالي',
-                'cat_1_title': '1. دراسات الجدوى الاقتصادية والمالية', 'cat_1_count': '(10 مشاريع)',
-                'proj_1_1': 'دراسة مالية - فندق البواحة الشتوية',
-                'proj_1_2': 'دراسة مالية - مصنع البلوك',
-                'proj_1_3': 'دراسة مالية - تطبيق جويك',
-                'proj_1_4': 'دراسة مالية - مصنع دوتك',
-                'proj_1_5': 'تقرير مالي - صالة ألعاب الخرج',
-                'proj_1_6': 'دراسة مالية لمشاريع جمعيات خيرية',
-                'proj_1_7': 'دراسة مالية - شركة تطوير عقاري',
-                'proj_1_8': 'دراسة مالية - فندق اللؤلؤة',
-                'proj_1_9': 'دراسة مالية - توسعة شركة الصايغ للنقل',
-                'proj_1_10': 'دراسة مالية - توسعة مجمع فندقي للناقلات',
+                'cat_1_title': '1. دراسات الجدوى الاقتصادية والمالية', 'cat_1_count': '(10 مشاريع)',
+                'proj_1_1': 'دراسة مالية - فندق البواحة الشتوية',
+                'proj_1_2': 'دراسة مالية - مصنع البلوك',
+                'proj_1_3': 'دراسة مالية - تطبيق جويك',
+                'proj_1_4': 'دراسة مالية - مصنع دوتك',
+                'proj_1_5': 'تقرير مالي - صالة ألعاب الخرج',
+                'proj_1_6': 'دراسة مالية لمشاريع جمعيات خيرية',
+                'proj_1_7': 'دراسة مالية - شركة تطوير عقاري',
+                'proj_1_8': 'دراسة مالية - فندق اللؤلؤة',
+                'proj_1_9': 'دراسة مالية - توسعة شركة الصايغ للنقل',
+                'proj_1_10': 'دراسة مالية - توسعة مجمع فندقي للناقلات',
 
-                'cat_2_title': '2. العروض الفنية والمالية', 'cat_2_count': '(4 مشاريع)',
-                'proj_2_1': 'عرض فني ومالي - مشروع مصنع استثماري',
-                'proj_2_2': 'تقرير مبيعات - احتياجات صحية ومياه',
-                'proj_2_3': 'تقرير مبيعات - شركة صحية ومصنع توزيع مياه',
-                'proj_2_4': 'عرض فني ومالي - توسعة شركة الصايغ للنقل',
+                'cat_2_title': '2. العروض الفنية والمالية', 'cat_2_count': '(4 مشاريع)',
+                'proj_2_1': 'عرض فني ومالي - مشروع مصنع استثماري',
+                'proj_2_2': 'تقرير مبيعات - احتياجات صحية ومياه',
+                'proj_2_3': 'تقرير مبيعات - شركة صحية ومصنع توزيع مياه',
+                'proj_2_4': 'عرض فني ومالي - توسعة شركة الصايغ للنقل',
 
-                'cat_3_title': '3. مشاريع استثمارية وتجارية', 'cat_3_count': '(4 مشاريع)',
-                'proj_3_1': 'مشروع توسعة تطوير عقاري',
-                'proj_3_2': 'مشروع تطوير منصة بنايات',
-                'proj_3_3': 'مشروع متجر خضار',
-                'proj_3_4': 'مشروع مركز أجهزة طبية',
+                'cat_3_title': '3. مشاريع استثمارية وتجارية', 'cat_3_count': '(4 مشاريع)',
+                'proj_3_1': 'مشروع توسعة تطوير عقاري',
+                'proj_3_2': 'مشروع تطوير منصة بنايات',
+                'proj_3_3': 'مشروع متجر خضار',
+                'proj_3_4': 'مشروع مركز أجهزة طبية',
 
-                'cat_4_title': '4. مشاريع صناعية ومعامل', 'cat_4_count': '(5 مشاريع)',
-                'proj_4_1': 'مشروع مصنع استثماري',
-                'proj_4_2': 'معمل تحضير خضار',
-                'proj_4_3': 'مصنع البلوك',
-                'proj_4_4': 'توسعة مصنع دوتك',
-                'proj_4_5': 'مشروع توريد زيوت وفلاتر سيارات',
+                'cat_4_title': '4. مشاريع صناعية ومعامل', 'cat_4_count': '(5 مشاريع)',
+                'proj_4_1': 'مشروع مصنع استثماري',
+                'proj_4_2': 'معمل تحضير خضار',
+                'proj_4_3': 'مصنع البلوك',
+                'proj_4_4': 'توسعة مصنع دوتك',
+                'proj_4_5': 'مشروع توريد زيوت وفلاتر سيارات',
 
-                'cat_5_title': '5. مشاريع بيئية وزراعية', 'cat_5_count': '(4 مشاريع)',
-                'proj_5_1': 'مشروع المخيم البيئي',
-                'proj_5_2': 'مشروع طلب أرض زراعية',
-                'proj_5_3': 'مشروع مزرعة أسماك',
-                'proj_5_4': 'مشروع قطرات العيون (ترطيب وتوزيع)',
+                'cat_5_title': '5. مشاريع بيئية وزراعية', 'cat_5_count': '(4 مشاريع)',
+                'proj_5_1': 'مشروع المخيم البيئي',
+                'proj_5_2': 'مشروع طلب أرض زراعية',
+                'proj_5_3': 'مشروع مزرعة أسماك',
+                'proj_5_4': 'مشروع قطرات العيون (ترطيب وتوزيع)',
 
-                'cat_6_title': '6. خدمات عامة ومشاريع خيرية', 'cat_6_count': '(4 مشاريع)',
-                'proj_6_1': 'خطة تشغيلية - جمعية "إعمار مساجد"',
-                'proj_6_2': 'دراسة مالية - مشاريع خيرية',
-                'proj_6_3': 'باقات خدمات المتجر الإلكتروني',
-                'proj_6_4': 'دراسة جدوى - خدمات الحج والعمرة',
+                'cat_6_title': '6. خدمات عامة ومشاريع خيرية', 'cat_6_count': '(4 مشاريع)',
+                'proj_6_1': 'خطة تشغيلية - جمعية "إعمار مساجد"',
+                'proj_6_2': 'دراسة مالية - مشاريع خيرية',
+                'proj_6_3': 'باقات خدمات المتجر الإلكتروني',
+                'proj_6_4': 'دراسة جدوى - خدمات الحج والعمرة',
 
-                'cat_7_title': '7. تطبيقات ومنصات رقمية', 'cat_7_count': '(5 مشاريع)',
-                'proj_7_1': 'دراسة جدوى تطبيق توصيل',
-                'proj_7_2': 'خطة عمل تطبيق تاكسي',
-                'proj_7_3': 'دراسة جدوى منصة "جويك"',
-                'proj_7_4': 'تطبيق "مرشد سياحي للحجز"',
-                'proj_7_5': 'دراسة جدوى شركة تسويق إلكتروني',
+                'cat_7_title': '7. تطبيقات ومنصات رقمية', 'cat_7_count': '(5 مشاريع)',
+                'proj_7_1': 'دراسة جدوى تطبيق توصيل',
+                'proj_7_2': 'خطة عمل تطبيق تاكسي',
+                'proj_7_3': 'دراسة جدوى منصة "جويك"',
+                'proj_7_4': 'تطبيق "مرشد سياحي للحجز"',
+                'proj_7_5': 'دراسة جدوى شركة تسويق إلكتروني',
 
-                'cat_8_title': '8. فنادق ومطاعم ومقاهي', 'cat_8_count': '(5 مشاريع)',
-                'proj_8_1': 'فندق البواحة الشتوية',
-                'proj_8_2': 'مشروع مطعم',
-                'proj_8_3': 'مشروع مطعم ووكالات عالمية',
-                'proj_8_4': 'مشروع إدارة مقهى ومطعم',
-                'proj_8_5': 'توسعة مجمع فندقي للناقلات',
+                'cat_8_title': '8. فنادق ومطاعم ومقاهي',
+                'proj_8_1': 'فندق البواحة الشتوية',
+                'proj_8_2': 'مشروع مطعم',
+                'proj_8_3': 'مشروع مطعم ووكالات عالمية',
+                'proj_8_4': 'مشروع إدارة مقهى ومطعم',
+                'proj_8_5': 'توسعة مجمع فندقي للناقلات',
 
-                'cat_9_title': '9. النقل واللوجستيات', 'cat_9_count': '(3 مشاريع)',
-                'proj_9_1': 'توسعة الصايغ للنقل',
-                'proj_9_2': 'توسعة 3 سنوات - الصايغ للنقل',
-                'proj_9_3': 'توسعة مجمع فندقي للناقلات',
+                'cat_9_title': '9. النقل واللوجستيات',
+                'proj_9_1': 'توسعة الصايغ للنقل',
+                'proj_9_2': 'توسعة 3 سنوات - الصايغ للنقل',
+                'proj_9_3': 'توسعة مجمع فندقي للناقلات',
 
-                'cat_10_title': '10. عقارات وتطوير', 'cat_10_count': '(4 مشاريع)',
-                'proj_10_1': 'شركة تطوير عقاري',
-                'proj_10_2': 'صالة معارض ومؤتمرات',
-                'proj_10_3': 'شركة تركيب ديكورات',
-                'proj_10_4': 'توسعة مجمع فندقي',
+                'cat_10_title': '10. عقارات وتطوير',
+                'proj_10_1': 'شركة تطوير عقاري',
+                'proj_10_2': 'صالة معارض ومؤتمرات',
+                'proj_10_3': 'شركة تركيب ديكورات',
+                'proj_10_4': 'توسعة مجمع فندقي',
 
-                'cat_11_title': '11. مشاريع متخصصة أخرى', 'cat_11_count': '(4 مشاريع)',
-                'proj_11_1': 'مشروع صالة عرض سيارات',
-                'proj_11_2': 'ورشة إصلاح سيارات',
-                'proj_11_3': 'جدوى اقتصادية - لؤلؤة',
-                'proj_11_4': 'تقنية النخاع الذاتي',
-                
-                // Tags
-                'tag_ksa': 'السعودية', 'tag_syria': 'سوريا', 'tag_syria_tr': 'سوريا/تركيا', 'tag_qatar': 'قطر', 'tag_oman': 'عُمان', 'tag_egypt': 'مصر',
+                'cat_11_title': '11. مشاريع متخصصة أخرى',
+                'proj_11_1': 'مشروع صالة عرض سيارات',
+                'proj_11_2': 'ورشة إصلاح سيارات',
+                'proj_11_3': 'جدوى اقتصادية - لؤلؤة',
+                'proj_11_4': 'تقنية النخاع الذاتي',
+                
+                'tag_ksa': 'السعودية', 'tag_syria': 'سوريا', 'tag_syria_tr': 'سوريا/تركيا', 'tag_qatar': 'قطر',
                 'testimonials_title': 'آراء العملاء',
-                'review_1_initials': 'أأ', 'review_1_name': 'أنور أ', 'review_1_title': 'عميل', 'review_1_text': '"الخدمة ممتازة جدًا جدًا! صاحبة الخدمة إنسانة رائعة وفي قمة التواضع والأخلاق الطيبة، أسأل الله أن يوفقها في مسيرتها المهنية وفي حياتها، وأنصح بالتعامل معها وبشدة."',
-                'review_2_initials': 'جس', 'review_2_name': 'جانا س', 'review_2_title': 'عميلة', 'review_2_text': '"متعاونة جدًا وسريعة بالتنفيذ والأهم أنها تتأكد إذا الشغل مرضي أو لا، بصراحة ما قصرت."',
-                'review_3_initials': 'عح', 'review_3_name': 'علي ح', 'review_3_title': 'عميل', 'review_3_text': '"ماشاء الله شغلها نظيف وأخلاق اللهم بارك، وإن شاء الله راح أتعاون معاها في مشاريع ثانية، شكرًا لك."',
-                'review_4_initials': 'فن', 'review_4_name': 'فهد ن', 'review_4_title': 'عميل', 'review_4_text': '"الأستاذة راما مبدعة ونتائج العمل أفضل من المطلوب، أشكرها وأنصح بالتعامل معها."',
-                'review_5_initials': 'عم', 'review_5_name': 'المهندس عمر م', 'review_5_title': 'مهندس', 'review_5_text': '"شكرًا جزيلاً أستاذة راما على جهدك لتنفيذ دراسة جدوى لمشروعي فكنت بكل أمانة مكان الثقة وحسن التعامل وإتمام العمل بمدة زمنية وجودة تفوق قدرة الشركات الكبرى التي تعاملت معها سابقًا. بارك الله فيك وأسعدك الله بالدارين، وأنا أدعو كل من يريد عمل دراسة جدوى التعامل مع الأستاذة راما بدون تردد."',
-                'review_6_initials': 'مح', 'review_6_name': 'محمد حسن ح', 'review_6_title': 'عميل', 'review_6_text': '"الأستاذة راما مجتهدة وتهتم بكل التفاصيل ومتعاونة جدًا."',
-                'review_7_initials': 'نا', 'review_7_name': 'نورا ا', 'review_7_title': 'عميلة', 'review_7_text': '"ماشاء الله تبارك الله، شغل رائع وتعاون أروع، أكيد مو آخر تعامل بإذن الله."',
-                'review_8_initials': 'صع', 'review_8_name': 'صروج العالمية', 'review_8_title': 'شركة', 'review_8_text': '"خلال شهر أكتوبر 2025 أنجزنا دراستي جدوى والتي أعدتهم الأستاذة راما المحترمة. خالص الشكر والامتنان للأستاذة راما، حقيقة عمل وإنجاز يُشاد به، أسعد الله أيامكم ربي يحفظكم."',
-                'contact_title': 'تواصل معي', 'contact_email_label': 'البريد الإلكتروني', 'contact_location_label': 'الموقع', 'contact_location': 'دمشق، سوريا', 'contact_name_placeholder': 'اسمك', 'contact_email_placeholder': 'بريدك الإلكتروني', 'contact_message_placeholder': 'رسالتك', 'contact_send': 'إرسال الرسالة',
-                'footer_text': '© 2025 نرمين أبوعيسي . جميع الحقوق محفوظة.'
+                'review_1_initials': 'أأ', 'review_1_name': 'أنور أ', 'review_1_text': '"الخدمة ممتازة جدًا جدًا! صاحبة الخدمة إنسانة رائعة وفي قمة التواضع والأخلاق الطيبة، أسأل الله أن يوفقها في مسيرتها المهنية وفي حياتها، وأنصح بالتعامل معها وبشدة."',
+                'review_2_initials': 'جس', 'review_2_name': 'جانا س', 'review_2_text': '"متعاونة جدًا وسريعة بالتنفيذ والأهم أنها تتأكد إذا الشغل مرضي أو لا، بصراحة ما قصرت."',
+                'review_3_initials': 'عح', 'review_3_name': 'علي ح', 'review_3_text': '"ماشاء الله شغلها نظيف وأخلاق اللهم بارك، وإن شاء الله راح أتعاون معاها في مشاريع ثانية، شكرًا لك."',
+                'review_4_initials': 'فن', 'review_4_name': 'فهد ن', 'review_4_text': '"الأستاذة راما مبدعة ونتائج العمل أفضل من المطلوب، أشكرها وأنصح بالتعامل معها."',
+                'review_5_initials': 'عم', 'review_5_name': 'المهندس عمر م', 'review_5_text': '"شكرًا جزيلاً أستاذة راما على جهدك لتنفيذ دراسة جدوى لمشروعي فكنت بكل أمانة مكان الثقة وحسن التعامل وإتمام العمل بمدة زمنية وجودة تفوق قدرة الشركات الكبرى التي تعاملت معها سابقًا. بارك الله فيك وأسعدك الله بالدارين، وأنا أدعو كل من يريد عمل دراسة جدوى التعامل مع الأستاذة راما بدون تردد."',
+                'review_6_initials': 'مح', 'review_6_name': 'محمد حسن ح', 'review_6_text': '"الأستاذة راما مجتهدة وتهتم بكل التفاصيل ومتعاونة جدًا."',
+                'review_7_initials': 'نا', 'review_7_name': 'نورا ا', 'review_7_text': '"ماشاء الله تبارك الله، شغل رائع وتعاون أروع، أكيد مو آخر تعامل بإذن الله."',
+                'review_8_initials': 'صع', 'review_8_name': 'صروج العالمية', 'review_8_text': '"خلال شهر أكتوبر 2025 أنجزنا دراستي جدوى والتي أعدتهم الأستاذة راما المحترمة. خالص الشكر والامتنان للأستاذة راما، حقيقة عمل وإنجاز يُشاد به، أسعد الله أيامكم ربي يحفظكم."',
+                'contact_title': 'تواصل معي', 'contact_email_label': 'البريد الإلكتروني', 'contact_phone_label': 'واتساب', 'contact_location_label': 'الموقع', 'contact_location': 'دمشق، سوريا', 'contact_name_placeholder': 'اسمك', 'contact_email_placeholder': 'بريدك الإلكتروني', 'contact_message_placeholder': 'رسالتك', 'contact_send': 'إرسال الرسالة',
+                'footer_text': '© 2025 نرمين أبوعيسي. جميع الحقوق محفوظة.'
             }
         };
 
@@ -1456,7 +1620,7 @@
             document.querySelectorAll('[data-translate-key]').forEach(element => {
                 const key = element.getAttribute('data-translate-key');
                 if (translations[lang] && translations[lang][key]) {
-                    if (element.placeholder !== undefined) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                         element.placeholder = translations[lang][key];
                     } else {
                         element.textContent = translations[lang][key];
@@ -1480,32 +1644,21 @@
             if (mobileLangBtn) mobileLangBtn.textContent = buttonText;
         }
 
-        function toggleLanguage() {
+        function handleLanguageToggle() {
             currentLang = currentLang === 'en' ? 'ar' : 'en';
             translatePage(currentLang);
-            localStorage.setItem('portfolioLang', currentLang); 
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+            localStorage.setItem('portfolioLang', currentLang);
+            
+            // Close mobile menu if open
+            if (mobileMenuOpen) {
+                closeMobileMenu();
+            }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('portfolioLang') || 'en';
             currentLang = savedLang;
             translatePage(currentLang);
-            
-            const langBtn = document.getElementById('lang-toggle-btn');
-            const mobileLangBtn = document.getElementById('mobile-lang-toggle-btn');
-            if (langBtn) langBtn.addEventListener('click', toggleLanguage);
-            if (mobileLangBtn) mobileLangBtn.addEventListener('click', toggleLanguage);
-
-            document.querySelectorAll('#mobileMenu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    document.getElementById('mobileMenu').classList.add('hidden');
-                });
-            });
 
             const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
             const observer = new IntersectionObserver((entries) => {
@@ -1515,7 +1668,11 @@
                     }
                 });
             }, observerOptions);
-            document.querySelectorAll('section').forEach(section => { observer.observe(section); });
+            
+            document.querySelectorAll('section').forEach(section => { 
+                observer.observe(section); 
+            });
+            
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -1528,4 +1685,3 @@
         });
     </script>
 </body>
-</html>
