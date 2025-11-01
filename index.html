@@ -30,20 +30,19 @@
 
 
 
-    <!-- Tailwind Config -->
-
+     <!-- Tailwind Config -->
    <script>
     tailwind.config = {
         theme: {
             extend: {
                 colors: {
-                     'aurora-green': '#d4af37',
-                    'aurora-blue': '#c9a86a',
-                    'aurora-purple': '#e6d5b8',
-                    'aurora-pink': '#f0e6d2',
-                    'dark-bg': '#faf8f5',
+                     'aurora-green': '#a8d5ba',
+                    'aurora-blue': '#b8dce8',
+                    'aurora-purple': '#d4b5e0',
+                    'aurora-pink': '#f5c8d6',
+                    'dark-bg': '#f8fbff',
                     'dark-card': '#ffffff',
-                    'dark-border': '#e8dcc8',
+                    'dark-border': '#d4e4f7',
                 }
             }
         }
@@ -71,94 +70,80 @@
 /* خلفية متحركة بتأثير الشفق القطبي */
 .aurora-bg { 
     position: relative;
-    /* تدرج بيج وأبيض هادئ */
-    background: linear-gradient(-60deg, #a49378, #cbb076, #af966f, #fffffe); 
+    /* تدرج ألوان فاتحة (لافندر، وردي فاتح، أزرق سماوي، نعناعي) */
+    background: linear-gradient(-60deg, #e8f4f8, #f0e8f5, #e8f5f0, #fef5f8); 
     background-size: 400% 400%; 
     animation: aurora 20s ease infinite; 
 }
 
-/* التعديل الجرافيكي الجديد: طبقة النقاط والدوائر الجرافيكية للخلفية - تظهر في كل الصفحات */
+/* تأثير الموجات الهادئة - تظهر في كل الصفحات */
 .aurora-bg::before {
     content: "";
-    position: fixed; /* لتكون ثابتة أثناء التمرير */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* تجميع تأثيرات النقاط الصغيرة والدوائر الشفافة والخيوط بألوان البيج/الذهبي */
     background-image: 
-        /* 1. نقاط صغيرة مبعثرة بدرجات الذهبي والبيج */
-        radial-gradient(circle at 20% 30%, rgba(66, 59, 35, 0.15) 2px, transparent 2px), /* ذهبي */
-        radial-gradient(circle at 80% 20%, rgba(77, 52, 5, 0.12) 2px, transparent 2px), /* بيج متوسط */
-        radial-gradient(circle at 40% 70%, rgba(79, 57, 16, 0.1) 2px, transparent 2px), /* بني فاتح */
-        radial-gradient(circle at 60% 50%, rgba(84, 58, 6, 0.15) 2px, transparent 2px), /* بيج فاتح */
-        
-        /* 2. دوائر كبيرة شفافة تضفي عمقاً */
-        radial-gradient(circle at 15% 15%, rgba(21, 17, 5, 0.08) 0%, transparent 25%),
-        radial-gradient(circle at 85% 80%, rgba(37, 27, 9, 0.08) 0%, transparent 30%),
-        radial-gradient(circle at 50% 40%, rgba(47, 32, 5, 0.06) 0%, transparent 35%),
-        
-        /* 3. خطوط منحنية رقيقة جداً (لتأثير نسيج) */
-        repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(212, 175, 55, 0.03) 60px, rgba(212, 175, 55, 0.03) 61px),
-        repeating-linear-gradient(-45deg, transparent, transparent 80px, rgba(230, 213, 184, 0.03) 80px, rgba(230, 213, 184, 0.03) 81px);
-        
-    background-size: 
-        60px 60px, /* حجم النقاط */
-        80px 80px,
-        70px 70px,
-        90px 90px,
-        600px 600px, /* حجم الدوائر */
-        700px 700px,
-        500px 500px,
-        100% 100%, /* حجم الخطوط */
-        100% 100%;
-        
-    opacity: 0.4; /* شفافية عامة للتأثير */
-    animation: backgroundMove 25s ease-in-out infinite; /* حركة هادئة */
+        /* موجات أفقية متعددة بألوان فاتحة */
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            rgba(168, 213, 186, 0.03) 40px,
+            rgba(168, 213, 186, 0.08) 80px,
+            rgba(184, 220, 232, 0.05) 120px,
+            transparent 160px
+        ),
+        repeating-linear-gradient(
+            180deg,
+            transparent 0px,
+            rgba(212, 181, 224, 0.04) 60px,
+            rgba(245, 200, 214, 0.07) 120px,
+            transparent 180px
+        );
+    opacity: 0.6;
+    animation: waveMove 20s ease-in-out infinite;
     pointer-events: none;
     z-index: 0;
 }
 
-/* طبقة إضافية للدوائر المتحركة (تأثير غني آخر) */
+/* حركة الموجات */
+@keyframes waveMove {
+    0%, 100% { 
+        transform: translateY(0px) scaleY(1);
+    }
+    50% { 
+        transform: translateY(-20px) scaleY(1.05);
+    }
+}
+
+/* طبقة إضافية للموجات المتقاطعة */
 .aurora-bg::after {
     content: "";
     position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: 
-        radial-gradient(ellipse at 30% 40%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 60%, rgba(230, 213, 184, 0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 80%, rgba(240, 230, 210, 0.04) 0%, transparent 50%);
-    animation: rotateBackground 40s linear infinite; /* دوران بطيء */
+        radial-gradient(ellipse at 30% 20%, rgba(168, 213, 186, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(184, 220, 232, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(212, 181, 224, 0.06) 0%, transparent 50%);
+    animation: waveRotate 30s linear infinite;
     pointer-events: none;
     z-index: 0;
 }
 
-/* حركة هادئة للنقاط والدوائر */
-@keyframes backgroundMove {
-    0%, 100% { 
-        transform: translate(0, 0) scale(1);
-    }
-    25% { 
-        transform: translate(10px, -10px) scale(1.02);
+/* حركة دوران بطيئة للموجات */
+@keyframes waveRotate {
+    0% { 
+        transform: rotate(0deg) scale(1);
     }
     50% { 
-        transform: translate(-5px, 5px) scale(0.98);
-    }
-    75% { 
-        transform: translate(5px, 10px) scale(1.01);
-    }
-}
-
-/* حركة دوران بطيئة للطبقة العلوية */
-@keyframes rotateBackground {
-    0% { 
-        transform: rotate(0deg);
+        transform: rotate(180deg) scale(1.1);
     }
     100% { 
-        transform: rotate(360deg);
+        transform: rotate(360deg) scale(1);
     }
 }
 
@@ -198,111 +183,69 @@
 }
 
 /* ألوان النقاط */
-.particle-green { background: #8e7c43; }
-.particle-blue { background: #e6d5b8; }
-.particle-purple { background: #674f20; }
-.particle-pink { background: #8e7546; }
-
-
-
+.particle-green { background: #a8d5ba; }
+.particle-blue { background: #b8dce8; }
+.particle-purple { background: #d4b5e0; }
+.particle-pink { background: #f5c8d6; }
 
 @keyframes aurora {
-
     0%, 100% { background-position: 0% 50%; }
-
     50% { background-position: 100% 50%; }
-
 }
 
-
-
 /* طبقة التأثيرات الضوئية فوق الخلفية */
-
 .aurora-overlay { 
    position: fixed; 
     top: 0; 
     left: 0; 
     right: 0; 
     height: 100vh; 
-    background: radial-gradient(ellipse at top left, rgba(212, 175, 55, 0.08) 0%, transparent 40%), 
-                radial-gradient(ellipse at top right, rgba(230, 213, 184, 0.08) 0%, transparent 40%), 
-                radial-gradient(ellipse at bottom left, rgba(240, 230, 210, 0.06) 0%, transparent 40%), 
-                radial-gradient(ellipse at bottom right, rgba(201, 168, 106, 0.06) 0%, transparent 40%); 
+    background: radial-gradient(ellipse at top left, rgba(168, 213, 186, 0.08) 0%, transparent 40%), 
+                radial-gradient(ellipse at top right, rgba(184, 220, 232, 0.08) 0%, transparent 40%), 
+                radial-gradient(ellipse at bottom left, rgba(212, 181, 224, 0.06) 0%, transparent 40%), 
+                radial-gradient(ellipse at bottom right, rgba(245, 200, 214, 0.06) 0%, transparent 40%); 
     pointer-events: none; 
     opacity: 0.6; 
 }
 
-
-
 /* نص بتدرج ألوان */
-
 .gradient-text { 
-     background: linear-gradient( #403624 50%, #1d1409 100%); 
+     background: linear-gradient(135deg, #5a9c7a 0%, #4a8ba8 50%, #8b6ba8 100%); 
     -webkit-background-clip: text; 
     background-clip: text; 
     -webkit-text-fill-color: transparent; 
 }
 
-
-
 /* تأثير الحركة العائمة */
-
 @keyframes float {
-
     0%, 100% { transform: translateY(0px); }
-
     50% { transform: translateY(-20px); }
-
 }
-
-
 
 .animate-float {
-
     animation: float 6s ease-in-out infinite;
-
 }
-
-
 
 /* تأثير الظهور من الأسفل */
-
 @keyframes slideUp {
-
     0% { transform: translateY(20px); opacity: 0; }
-
     100% { transform: translateY(0); opacity: 1; }
-
 }
-
-
 
 .animate-slide-up {
-
     animation: slideUp 0.5s ease-out;
-
 }
-
-
 
 /* تأثيرات Hover للكروت */
-
 .card-hover { 
-
     transition: all 0.4s ease; 
-
     border: 1px solid transparent; 
-
 }
-
 .card-hover.green-glow:hover { 
-
-     border-color: #9a7e4a; 
+     border-color: #a8d5ba; 
     transform: translateY(-5px); 
-    box-shadow: 0 10px 30px rgba(221, 172, 82, 0.3); 
-
+    box-shadow: 0 10px 30px rgba(168, 213, 186, 0.3); 
 }
-
 
 /* ========================================
    📱 NAVIGATION - قسم التنقل
@@ -312,10 +255,9 @@ nav {
     top: 0;
     width: 100%;
     z-index: 50;
-    background: rgba(233, 226, 193, 0.95);
+    background: rgba(248, 251, 255, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(185, 150, 91, 0.5);
-    /* إضافة: منع التغيير مع RTL */
+    border-bottom: 1px solid rgba(212, 228, 247, 0.5);
     direction: ltr !important;
 }
 
@@ -337,8 +279,7 @@ nav {
     font-weight: bold;
     z-index: 60;
     order: 1;
-    /* إزالة أي margin */
-    margin: -150px;;
+    margin: 0;
 }
 
 /* قائمة الديسكتوب - دائمًا في أقصى اليمين */
@@ -349,23 +290,23 @@ nav {
     list-style: none;
     margin: 0;
     padding: 0;
-    order: 2; /* ← غيرنا من 3 لـ 2 */
-    flex: 1; /* ← عشان ياخد المساحة المتاحة */
-    justify-content: right; /* ← عشان الأزرار تبقى في النص */
+    order: 2;
+    flex: 1;
+    justify-content: right;
 }
 
 /* زرار اللغة لوحده في أقصى اليمين */
 .desktop-menu .lang-btn {
-    margin-left: auto ; /* ← يدفعه لأقصى اليمين */
+    margin-left: auto;
 }
 
 .desktop-menu a {
-   color: #2c2416 !important;
+   color: #2c5f7a !important;
     text-decoration: none;
     transition: all 0.3s;
     font-size: 0.95rem;
     padding: 0.6rem 1.5rem;
-    background: linear-gradient(135deg, #d4af37 0%, #c9a86a 100%);
+    background: linear-gradient(135deg, #a8d5ba 0%, #b8dce8 100%);
     border-radius: 9999px;
     font-weight: 600;
 }
@@ -373,32 +314,30 @@ nav {
 /* الكروت */
 .bg-dark-card {
     background-color: #ffffff !important;
-    border: 1px solid #e8dcc8 !important;
+    border: 1px solid #d4e4f7 !important;
 }
-
 
 .desktop-menu a:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 4px 15px rgba(168, 213, 186, 0.4);
 }
 
 /* زر تبديل اللغة - ديسكتوب */
 .desktop-menu .lang-btn {
      padding: 0.7rem 2rem;
-    background: linear-gradient(135deg, #d4af37 0%, #c9a86a 100%);
+    background: linear-gradient(135deg, #a8d5ba 0%, #b8dce8 100%);
     border: none;
-    color: #2c2416;
+    color: #2c5f7a;
     border-radius: 9999px;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s;
     font-weight: 900;
-     
 }
 
 .desktop-menu .lang-btn:hover {
    transform: scale(1.08);
-    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
+    box-shadow: 0 5px 20px rgba(168, 213, 186, 0.5);
 }
 
 /* زر القائمة للموبايل - دائمًا في اليمين */
@@ -406,7 +345,7 @@ nav {
     display: block;
     background: none;
     border: none;
-    color: #2c2416;
+    color: #2c5f7a;
     font-size: 1.5rem;
     cursor: pointer;
     z-index: 60;
@@ -428,8 +367,7 @@ nav {
     transition: right 0.3s ease;
     z-index: 55;
     padding: 5rem 2rem 2rem;
-    border-left: 1px solid rgba(232, 220, 200, 0.3);
-    /* إضافة: ثابت على LTR */
+    border-left: 1px solid rgba(212, 228, 247, 0.3);
     direction: ltr !important;
     text-align: left !important;
 }
@@ -444,7 +382,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(255, 255,255, 1);
+    background: rgba(0, 0, 0, 0.3);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -459,42 +397,38 @@ nav {
 .mobile-menu a {
     display: block;
     padding: 1rem 0;
-    color: #d1d5db;
+    color: #2c5f7a;
     text-decoration: none;
     font-size: 1.1rem;
-    border-bottom: 1px solid rgba(232, 220, 200, 0.5);
+    border-bottom: 1px solid rgba(212, 228, 247, 0.5);
     transition: all 0.3s;
     text-align: left;
 }
 
 .mobile-menu a:hover {
-    color: #d4af37;
+    color: #a8d5ba;
     padding-left: 1rem;
 }
 
 /* زر اللغة للموبايل */
-.desktop-menu .lang-btn {
+.mobile-lang-btn {
     padding: 0.7rem 2rem;
-    background: linear-gradient(135deg, #d4af37 0%, #c9a86a 100%);
+    background: linear-gradient(135deg, #a8d5ba 0%, #b8dce8 100%);
     border: none;
-    color: #2c2416;
+    color: #2c5f7a;
     border-radius: 9999px;
     font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.3s;
     font-weight: 900;
-     margin-left: auto;
-
+    margin-top: 1rem;
+    width: 100%;
 }
 
-.desktop-menu .lang-btn:hover {
+.mobile-lang-btn:hover {
     transform: scale(1.08);
-    box-shadow: 0 5px 20px rgba(255, 255, 255,0.9);
+    box-shadow: 0 5px 20px rgba(168, 213, 186, 0.5);
 }
-
-
-
-
 
 /* عرض قائمة الديسكتوب على الشاشات الكبيرة */
 @media (min-width: 768px) {
@@ -516,583 +450,299 @@ nav {
     }
 }
 
-
-
-
-
 /* ========================================
-
    🖼️ ABOUT - قسم عني (الصورة الشخصية)
-
    ======================================== */
-
 .large-circular-image {
-
     width: 300px; 
-
     height: 300px;
-
-    border: 3px solid #d4af37;
-
+    border: 3px solid #a8d5ba;
     border-radius: 50%;
-
     padding: 0; 
-
     margin: 0 auto 20px auto;
-
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);  
-
+    box-shadow: 0 0 15px rgba(168, 213, 186, 0.5);  
     transition: all 0.3s ease-in-out; 
-
 }
-
-
 
 .large-circular-image img { 
-
     width: 100%; 
-
     height: 100%; 
-
     object-fit: cover; 
-
     border-radius: 50%; 
-
 }
-
-
 
 /* أحجام مختلفة للصورة حسب حجم الشاشة */
-
 @media (min-width: 768px) {
-
     .large-circular-image {
-
         width: 350px; 
-
         height: 350px;
-
         margin-right: 30px;
-
         margin-left: 100px;
-
     }
-
 }
-
-
 
 @media (min-width: 1024px) {
-
     .large-circular-image {
-
         width: 450px; 
-
         height: 450px;
-
     }
-
 }
-
-
 
 @media (min-width: 1280px) {
-
     .large-circular-image {
-
         width: 500px; 
-
         height: 500px;
-
     }
-
 }
-
-
-
-
 
 /* ========================================
-
    📂 WORK SECTION - قسم الأعمال (Accordion)
-
    ======================================== */
-
 .accordion-item {
-
     margin-bottom: 1rem;
-
     border-radius: 0.5rem;
-
     overflow: hidden;
-
-    box-shadow: 0 4px 10px rgba(80, 70, 45, 0.1);
-
+    box-shadow: 0 4px 10px rgba(168, 213, 186, 0.1);
     border: 1px solid transparent;
-
     transition: all 0.3s;
-
 }
-
-
 
 /* رأس الأكورديون */
-
 .accordion-header {
-
     background-color: #ffffff;
-
     padding: 1rem;
-
     cursor: pointer;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
-    color: #2c2416;
-
+    color: #2c5f7a;
     transition: all 0.3s ease;
-
     font-weight: bold;
-
     border-bottom: 1px solid transparent;
-
 }
-
-
 
 .accordion-header:hover, 
-
 .accordion-header.active {
-
-    border: 1px solid #d4af37;
-
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-
+    border: 1px solid #a8d5ba;
+    box-shadow: 0 0 15px rgba(168, 213, 186, 0.2);
 }
-
-
 
 /* أيقونة التصنيف */
-
 .accordion-icon {
-
     font-size: 1.5rem;
-
     margin-right: 0.75rem;
-
-    background: linear-gradient(135deg, #d4af37, #c9a86a); 
-
+    background: linear-gradient(135deg, #a8d5ba, #b8dce8); 
     -webkit-background-clip: text;
-
     background-clip: text;
-
     -webkit-text-fill-color: transparent;
-
-    filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.5)); 
-
+    filter: drop-shadow(0 0 4px rgba(168, 213, 186, 0.5)); 
 }
-
-
 
 /* محتوى الأكورديون */
-
 .accordion-content {
-
-    background-color: #f5d89f; 
-
+    background-color: #f8fbff; 
     padding: 0 1rem;
-
     overflow: hidden;
-
     max-height: 0;
-
     transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
-
-    color: #a5927c;
-
+    color: #5a9c7a;
 }
-
-
 
 .accordion-content.active {
-
     max-height: 1500px;
-
     padding: 1rem;
-
 }
-
-
 
 /* عنوان المشروع داخل الأكورديون */
-
 .accordion-title {
-
     display: flex;
-
     align-items: center;
-
     padding: 0.5rem 0;
-
-    border-bottom: 1px dashed rgba(232, 220, 200, 0.5);
-
+    border-bottom: 1px dashed rgba(212, 228, 247, 0.5);
 }
-
-
 
 .accordion-title:last-child { 
-
     border-bottom: none; 
-
 }
-
-
 
 /* السهم بجانب اسم المشروع */
-
 .accordion-title .arrow {
-
-    color: #d4af37;
-
+    color: #a8d5ba;
     margin-right: 0.5rem;
-
     font-size: 0.75rem;
-
     min-width: 0.75rem;
-
 }
-
-
 
 /* تاج الدولة */
-
 .project-tag-container {
-
     display: flex;
-
     margin-left: auto;
-
     margin-right: 0;
-
     align-items: center;
-
 }
-
-
 
 .project-tag {
-
     display: inline-block;
-
     margin-left: 0.5rem;
-
     padding: 0.1rem 0.6rem;
-
     border-radius: 9999px;
-
     font-size: 0.75rem;
-
     font-weight: 500;
-
-    background-color: rgba(212, 175, 55, 0.15); 
-
-    color: #8b7355; 
-
+    background-color: rgba(168, 213, 186, 0.15); 
+    color: #5a9c7a; 
     flex-shrink: 0; 
-
 }
-
-
-
-
 
 /* ========================================
-
    🌍 RTL SUPPORT - دعم اللغة العربية
-
    ======================================== */
-
 .rtl-mode { 
-
     text-align: right; 
-
 }
-
-
 
 .rtl-mode .space-x-8 > * { 
-
     margin-left: 0 !important; 
-
     margin-right: 2rem !important; 
-
 }
-
-
 
 .rtl-mode .space-x-8 > *:first-child { 
-
     margin-right: 0 !important; 
-
 }
-
-
 
 .rtl-mode .pl-8 { 
-
     padding-left: 0; 
-
     padding-right: 2rem; 
-
     border-left: none; 
-
     border-right: 2px solid; 
-
 }
-
-
 
 .rtl-mode .pl-8 .absolute { 
-
     left: auto; 
-
     right: -2px; 
-
 }
-
-
 
 .rtl-mode .text-left { 
-
     text-align: right; 
-
 }
-
-
 
 .rtl-mode .ml-4 { 
-
     margin-left: 0 !important; 
-
     margin-right: 1rem !important; 
-
 }
-
-
 
 .rtl-mode .space-x-4 > * { 
-
     margin-left: 0 !important; 
-
     margin-right: 1rem !important; 
-
 }
-
-
 
 .rtl-mode .space-x-4 > *:first-child { 
-
     margin-right: 0 !important; 
-
 }
-
-
 
 .rtl-mode .large-circular-image { 
-
     margin-left: auto;
-
     margin-right: auto; 
-
 }
-
-
 
 @media (min-width: 768px) {
-
     .rtl-mode .large-circular-image {
-
         margin-left: 100px;
-
         margin-right: 30px; 
-
     }
-
 }
-
 
 .rtl-mode .accordion-icon { 
-
     margin-right: 0; 
-
     margin-left: 0.75rem; 
-
 }
-
-
 
 .rtl-mode .accordion-title .arrow {
-
     margin-left: 0.5rem;
-
     margin-right: 0;
-
     transform: rotate(180deg);
-
 }
-
-
 
 .rtl-mode .project-tag-container {
-
     margin-right: auto;
-
     margin-left: 0;
-
 }
-
-
 
 .rtl-mode .project-tag {
-
     margin-right: 0.5rem;
-
     margin-left: 0;
-
 }
 
-
 body {
-    color: #2c2416 !important;
+    color: #2c5f7a !important;
 }
 
 .text-gray-200 {
-    color: #4a4239 !important;
+    color: #4a7a92 !important;
 }
 
 .text-gray-400 {
-    color: #6d5d4d !important;
+    color: #6d95ab !important;
 }
 
 .text-gray-500 {
-    color: #8b7355 !important;
+    color: #8bafc4 !important;
 }
 
 </style>
-
 </head>
-
-<body class="aurora-bg"></body>
-
-
+<body class="aurora-bg">
 
     <!-- خلفية التأثيرات -->
-
     <div class="aurora-overlay"></div>
 
-
-
     <!-- ========================================
-
          📱 NAVIGATION SECTION - قسم التنقل
-
          ======================================== -->
-
     <nav>
-
         <div class="nav-container">
-
             <div class="nav-content">
-
                 <!-- Logo -->
-
                 <div class="logo gradient-text" data-translate-key="hero_name">Rama Albringi</div>
-
                 
-
                 <!-- Desktop Menu -->
-
                 <ul class="desktop-menu">
-
                     <li><a href="#home" data-translate-key="nav_home">Home</a></li>
-
                     <li><a href="#about" data-translate-key="nav_about">About</a></li>
-
                     <li><a href="#experience" data-translate-key="nav_experience">Experience</a></li>
-
                     <li><a href="#services" data-translate-key="nav_services">Services</a></li>
-
                     <li><a href="#Work" data-translate-key="nav_work">Work</a></li>
-
                     <li><a href="#testimonials" data-translate-key="nav_testimonials">Testimonials</a></li>
-
                     <li><a href="#contact" data-translate-key="nav_contact">Contact</a></li>
-
                     <li>
-
                         <button class="lang-btn" onclick="handleLanguageToggle()" id="lang-toggle-btn" 
-
                                 style="margin: 0; padding: 0.8rem 1.25rem; font-size: 1rem;">
-
                             العربية
-
                         </button>
-
                     </li>
-
                 </ul>
 
-
-
                 <!-- Mobile Menu Button -->
-
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
-
                     <i class="fas fa-bars" id="menuIcon"></i>
-
                 </button>
-
             </div>
-
         </div>
-
     </nav>
-
     
-
     <!-- Mobile Menu Overlay -->
-
     <div class="mobile-menu-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
 
-
-
     <!-- Mobile Menu -->
-
     <div class="mobile-menu" id="mobileMenu">
-
         <a href="#home" data-translate-key="nav_home" onclick="closeMobileMenu()">Home</a>
-
         <a href="#about" data-translate-key="nav_about" onclick="closeMobileMenu()">About</a>
-
         <a href="#experience" data-translate-key="nav_experience" onclick="closeMobileMenu()">Experience</a>
-
         <a href="#services" data-translate-key="nav_services" onclick="closeMobileMenu()">Services</a>
-
         <a href="#Work" data-translate-key="nav_work" onclick="closeMobileMenu()">Work</a>
-
         <a href="#testimonials" data-translate-key="nav_testimonials" onclick="closeMobileMenu()">Testimonials</a>
-
         <a href="#contact" data-translate-key="nav_contact" onclick="closeMobileMenu()">Contact</a>
-
         <button class="mobile-lang-btn" id="mobile-lang-toggle-btn" onclick="handleLanguageToggle()">العربية</button>
-
     </div>
-
-
 
     
 
@@ -2002,7 +1652,7 @@ body {
 
                             <i class="fas fa-chevron-right arrow"></i>
 
-                            <span data-translate-key="proj_2_3">Beton</span>
+                            <span data-translate-key="proj_2_3"style="color: black;">Beton</span>
                             <div class="project-tag-container"><span class="project-tag" style="color: black;" data-translate-key="tag_Syria">Syria</span></div>
 
                         </div>
@@ -2011,7 +1661,7 @@ body {
 
                             <i class="fas fa-chevron-right arrow"></i>
 
-                            <span data-translate-key="proj_2_4">Economic Feasibility Study - Peril</span>
+                            <span data-translate-key="proj_2_4"style="color: black;">Economic Feasibility Study - Peril</span>
                             <div class="project-tag-container"><span class="project-tag" style="color: black;" data-translate-key="tag_Qatar">Qatar</span></div>
 
                         </div>
@@ -2081,9 +1731,9 @@ body {
 
                             <i class="fas fa-industry accordion-icon"></i>
 
-                            <span data-translate-key="cat_4_title" style="color: black;">4.Projects</span>
+                            <span data-translate-key="cat_4_title">4.Projects</span>
 
-                            <span class="text-sm ml-2 mr-2 opacity-70" style="color: black;" data-translate-key="cat_4_count">(7 Projects)</span>
+                            <span class="text-sm ml-2 mr-2 opacity-70"data-translate-key="cat_4_count">(7 Projects)</span>
 
                         </div>
 
@@ -2249,9 +1899,9 @@ body {
 
                             <i class="fas fa-hands-helping accordion-icon"></i>
 
-                            <span data-translate-key="cat_6_title" style="color: black;">6. Public Services & Charity Projects</span>
+                            <span data-translate-key="cat_6_title" >6. Public Services & Charity Projects</span>
 
-                            <span class="text-sm ml-2 mr-2 opacity-70"  style="color: black;"data-translate-key="cat_6_count">(4 Projects)</span>
+                            <span class="text-sm ml-2 mr-2 opacity-70"data-translate-key="cat_6_count">(4 Projects)</span>
 
                         </div>
 
@@ -2629,7 +2279,7 @@ body {
 
                             <i class="fas fa-chevron-right arrow" style="color: black;"></i>
 
-                            <span data-translate-key="proj_10_2">Exhibition & Conference Hall</span>
+                            <span data-translate-key="proj_10_2"style="color: black;">Exhibition & Conference Hall</span>
                             <div class="project-tag-container"><span class="project-tag"  style="color: black;"data-translate-key="tag_ksa">KSA</span></div>
 
                         </div>
@@ -3460,7 +3110,7 @@ body {
 
                         <!-- صفحة إعادة التوجيه بعد الإرسال -->
 
-                        <input type="hidden" name="_next" value="https://nermeennoman.github.io/Rama-sportfolio/thanks.html">
+                        <input type="hidden" name="_next" value="https://nermeennoaman.github.io/portfolio-Rama-/thanks.html">
 
 
 
